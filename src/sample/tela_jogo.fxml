@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0"
+      prefWidth="982.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="sample.TelaJogoPresenterImpl">
+    <children>
+        <ImageView fx:id="mesa" fitHeight="620.0" fitWidth="991.0" layoutX="-9.0" pickOnBounds="true"
+                   preserveRatio="true">
+            <image>
+                <Image url="@images/mesa.png"/>
+            </image>
+        </ImageView>
+        <ImageView fx:id="heroi_jogador" fitHeight="150.0" fitWidth="113.0" layoutX="439.0" layoutY="414.0"
+                   pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/bruxo_jogo.png"/>
+            </image>
+        </ImageView>
+        <ImageView fx:id="ph_jogador" fitHeight="142.0" fitWidth="97.0" layoutX="549.0" layoutY="422.0"
+                   onMouseClicked="#onPoderHeroicoClicked" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/ph_bruxo.png"/>
+            </image>
+        </ImageView>
+        <ImageView fx:id="heroi_adversario" fitHeight="150.0" fitWidth="145.0" layoutX="434.0" layoutY="23.0"
+                   pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/cacador_jogo.png"/>
+            </image>
+        </ImageView>
+        <ImageView fx:id="ph_adversario" fitHeight="134.0" fitWidth="120.0" layoutX="539.0" layoutY="39.0"
+                   pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/ph_cacador.png"/>
+            </image>
+        </ImageView>
+        <Label fx:id="mana_jogador" layoutX="881.0" layoutY="556.0" prefHeight="28.0" prefWidth="57.0" text="XX/XX">
+            <font>
+                <Font size="18.0"/>
+            </font>
+        </Label>
+        <ImageView fx:id="carta_1" fitHeight="115.0" fitWidth="73.0" layoutY="516.0" onMouseClicked="#onCarta1Clicked"
+                   pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/carta_teste.png"/>
+            </image>
+        </ImageView>
+        <ImageView fx:id="carta_2" fitHeight="104.0" fitWidth="73.0" layoutX="73.0" layoutY="516.0"
+                   onMouseClicked="#onCarta2Clicked" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/carta_teste.png"/>
+            </image>
+        </ImageView>
+        <ImageView fx:id="carta_3" fitHeight="104.0" fitWidth="73.0" layoutX="146.0" layoutY="516.0"
+                   onMouseClicked="#onCarta3Clicked" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/carta_teste.png"/>
+            </image>
+        </ImageView>
+        <ImageView fx:id="carta_4" fitHeight="104.0" fitWidth="73.0" layoutX="219.0" layoutY="518.0"
+                   onMouseClicked="#onCarta4Clicked" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/carta_teste.png"/>
+            </image>
+        </ImageView>
+        <ImageView fx:id="carta_5" fitHeight="104.0" fitWidth="73.0" layoutX="292.0" layoutY="518.0"
+                   onMouseClicked="#onCarta5Clicked" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/carta_teste.png"/>
+            </image>
+        </ImageView>
+        <ImageView fx:id="carta_6" fitHeight="104.0" fitWidth="73.0" layoutX="365.0" layoutY="518.0"
+                   onMouseClicked="#onCarta6Clicked" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/carta_teste.png"/>
+            </image>
+        </ImageView>
+        <ImageView fx:id="carta_mesa_jogador_1" fitHeight="118.0" fitWidth="83.0" layoutX="175.0" layoutY="293.0"
+                   onMouseClicked="#onCartaMesa1Clicked" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/carta_teste.png"/>
+            </image>
+        </ImageView>
+        <ImageView fx:id="carta_mesa_jogador_2" fitHeight="118.0" fitWidth="83.0" layoutX="287.0" layoutY="293.0"
+                   pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/carta_teste.png"/>
+            </image>
+        </ImageView>
+        <ImageView fx:id="carta_mesa_jogador_3" fitHeight="118.0" fitWidth="83.0" layoutX="417.0" layoutY="293.0"
+                   pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/carta_teste.png"/>
+            </image>
+        </ImageView>
+        <ImageView fx:id="carta_mesa_jogador_4" fitHeight="118.0" fitWidth="83.0" layoutX="535.0" layoutY="293.0"
+                   pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/carta_teste.png"/>
+            </image>
+        </ImageView>
+        <ImageView fx:id="carta_mesa_jogador_5" fitHeight="118.0" fitWidth="83.0" layoutX="657.0" layoutY="293.0"
+                   pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/carta_teste.png"/>
+            </image>
+        </ImageView>
+        <Label fx:id="vida_carta_jogador_1" layoutX="258.0" layoutY="389.0" text="XX"/>
+        <Label fx:id="vida_carta_jogador_2" layoutX="370.0" layoutY="389.0" text="XX"/>
+        <Label fx:id="vida_carta_jogador_3" layoutX="501.0" layoutY="390.0" text="XX"/>
+        <Label fx:id="vida_carta_jogador_4" layoutX="618.0" layoutY="389.0" text="XX"/>
+        <Label fx:id="vida_carta_jogador_5" layoutX="740.0" layoutY="389.0" text="XX"/>
+        <ImageView fx:id="carta_mesa_adversario_1" fitHeight="118.0" fitWidth="83.0" layoutX="175.0" layoutY="173.0"
+                   pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/carta_teste.png"/>
+            </image>
+        </ImageView>
+        <ImageView fx:id="carta_mesa_adversario_2" fitHeight="118.0" fitWidth="83.0" layoutX="287.0" layoutY="173.0"
+                   pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/carta_teste.png"/>
+            </image>
+        </ImageView>
+        <ImageView fx:id="carta_mesa_adversario_3" fitHeight="118.0" fitWidth="83.0" layoutX="417.0" layoutY="173.0"
+                   pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/carta_teste.png"/>
+            </image>
+        </ImageView>
+        <ImageView fx:id="carta_mesa_adversario_4" fitHeight="118.0" fitWidth="83.0" layoutX="535.0" layoutY="173.0"
+                   pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/carta_teste.png"/>
+            </image>
+        </ImageView>
+        <ImageView fx:id="carta_mesa_adversario_5" fitHeight="118.0" fitWidth="83.0" layoutX="657.0" layoutY="173.0"
+                   pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/carta_teste.png"/>
+            </image>
+        </ImageView>
+        <Label fx:id="vida_carta_adversario_1" layoutX="258.0" layoutY="264.0" text="XX"/>
+        <Label fx:id="vida_carta_adversario_2" layoutX="370.0" layoutY="264.0" text="XX"/>
+        <Label fx:id="vida_carta_adversario_3" layoutX="501.0" layoutY="264.0" text="XX"/>
+        <Label fx:id="vida_carta_adversario_4" layoutX="618.0" layoutY="264.0" text="XX"/>
+        <Label fx:id="vida_carta_adversario_5" layoutX="740.0" layoutY="264.0" text="XX"/>
+        <Label fx:id="vida_heroi_adversario" layoutX="515.0" layoutY="120.0" text="XX"/>
+        <Label fx:id="vida_heroi_jogador" layoutX="522.0" layoutY="510.0" text="XX"/>
+        <ImageView fx:id="finalizar_turno_button" fitHeight="48.0" fitWidth="97.0" layoutX="783.0" layoutY="257.0"
+                   onMouseClicked="#onFinalizarTurnoClicked" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/botao_finalizar_turno.png"/>
+            </image>
+        </ImageView>
+        <ImageView fx:id="desistir_button" fitHeight="48.0" fitWidth="113.0" layoutX="870.0" layoutY="269.0"
+                   onMouseClicked="#onDesistirClicked" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/botao_desistir.png"/>
+            </image>
+        </ImageView>
+        <ImageView fx:id="carta_mostrada" fitHeight="484.0" fitWidth="370.0" layoutX="302.0" layoutY="14.0"
+                   pickOnBounds="true" preserveRatio="true" visible="false">
+            <image>
+                <Image url="@images/carta_teste.png"/>
+            </image>
+        </ImageView>
+        <ImageView fx:id="confirmar_button" fitHeight="71.0" fitWidth="136.0" layoutX="505.0" layoutY="510.0"
+                   onMouseClicked="#onConfirmarClicked" pickOnBounds="true" preserveRatio="true" visible="false">
+            <image>
+                <Image url="@images/botao_confirmar.png"/>
+            </image>
+        </ImageView>
+        <ImageView fx:id="cancelar_button" fitHeight="60.0" fitWidth="157.0" layoutX="302.0" layoutY="509.0"
+                   onMouseClicked="#onCancelarClicked" pickOnBounds="true" preserveRatio="true" visible="false">
+            <image>
+                <Image url="@images/botao_cancelar.png"/>
+            </image>
+        </ImageView>
+    </children>
+</Pane>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane prefHeight="410.0" prefWidth="1139.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.TelaSelecaoPresenterImpl">
+    <children>
+        <ImageView fitHeight="420.0" fitWidth="1133.0" layoutX="3.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/tela_selecao.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="procurar_partida_button" fitHeight="150.0" fitWidth="200.0" layoutX="844.0" layoutY="237.0" onMouseClicked="#onProcurarPartidaClicked" opacity="0.25" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/botao_play.png" />
+            </image>
+        </ImageView>
+        <Label fx:id="procurar_partida_label" layoutX="780.0" layoutY="178.0" text="PROCURAR PARTIDA">
+            <font>
+                <Font size="30.0" />
+            </font>
+        </Label>
+        <ImageView fx:id="bruxo_selecao" fitHeight="150.0" fitWidth="190.0" layoutX="131.0" layoutY="103.0" onMouseClicked="#onBruxoSelecaoClicked" opacity="0.7" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/bruxo_selecao.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="cacador_selecao" fitHeight="150.0" fitWidth="190.0" layoutX="421.0" layoutY="104.0" onMouseClicked="#onCacadorSelecaoClicked" opacity="0.7" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/cacador_selecao.png" />
+            </image>
+        </ImageView>
+        <ImageView fx:id="escolha_button" fitHeight="50.0" fitWidth="190.0" layoutX="293.0" layoutY="350.0" onMouseClicked="#onBotaoEscolhidoClicked" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@images/botao_escollha.png" />
+            </image>
+        </ImageView>
+      <Label layoutX="144.0" layoutY="276.0" prefHeight="45.0" prefWidth="457.0" text="CONFIRMAR HEROI E CONECTAR">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Label>
+    </children>
+</Pane>

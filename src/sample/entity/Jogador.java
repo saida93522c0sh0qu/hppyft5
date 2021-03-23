@@ -99,4 +99,7 @@ public class Jogador {
 		this.manaMaxima = manaMaxima;
 	}
 
+	public Heroi getHeroi() {
+		return heroi;
+	}
 }

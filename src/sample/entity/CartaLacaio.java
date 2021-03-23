@@ -2,44 +2,32 @@ package sample.entity;
 
 public class CartaLacaio extends Carta {
 
-	protected int ataque;
-	protected int vida;
-	protected int vidaAtual;
+    protected int ataque;
+    protected int vida;
 
-	public int getAtaque() {
-		return this.ataque;
-	}
+    public CartaLacaio(int id, int custoMana, String caminhoImagem, int ataque, int vida) {
+        super(id, custoMana, caminhoImagem);
+        this.ataque = ataque;
+        this.vida = vida;
+    }
 
-	/**
-	 * 
-	 * @param ataque
-	 */
-	public void setAtaque(int ataque) {
-		this.ataque = ataque;
-	}
+    public CartaLacaio() {
+    }
 
-	public int getVida() {
-		return this.vida;
-	}
+    public int getAtaque() {
+        return this.ataque;
+    }
 
-	/**
-	 * 
-	 * @param vida
-	 */
-	public void setVida(int vida) {
-		this.vida = vida;
-	}
+    public void setAtaque(int ataque) {
+        this.ataque = ataque;
+    }
 
-	public int getVidaAtual() {
-		return this.vidaAtual;
-	}
+    public int getVida() {
+        return this.vida;
+    }
 
-	/**
-	 * 
-	 * @param vidaAtual
-	 */
-	public void setVidaAtual(int vidaAtual) {
-		this.vidaAtual = vidaAtual;
-	}
+    public void setVida(int vida) {
+        this.vida = vida;
+    }
 
 }

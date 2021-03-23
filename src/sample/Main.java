@@ -5,26 +5,34 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import sample.entity.Jogada;
-import sample.entity.Tabuleiro;
+import sample.entity.*;
+
+import java.util.ArrayList;
 
 public class Main extends Application {
 
+    private static final String APP_TITLE = "HEARTHSTONE";
     private static final String ID_BOTAO_CONFIRMAR = "#confirmar_button";
     private static final String ID_BOTAO_CANCELAR = "#cancelar_button";
-    private static final String APP_TITLE = "HEARTHSTONE";
+    private static final String ID_CARTA_SELECIONADA = "#carta_mostrada";
+
     protected Stage stage;
     private static Main instance;
-    protected boolean procurou;
+
     protected Tabuleiro tabuleiro;
+
+    protected boolean procurou;
     protected boolean ganhou;
+    protected boolean acabou;
+    protected boolean botoesCartaDisponiveis = false;
+    protected boolean botoesGeraisDisponiveis = false;
+
     protected int idCartaMostrada;
     protected int idPosicaoCartaMostrada;
-    protected boolean acabou;
-    protected boolean botoesCartaDisponiveis;
-    protected boolean botoesGeraisDisponiveis;
+    protected Integer mIdHeroijogador;
 
     public Main() {
         instance = this;
@@ -41,9 +49,6 @@ public class Main extends Application {
         return this.tabuleiro;
     }
 
-    /**
-     * @param tabuleiro
-     */
     public void setTabuleiro(Tabuleiro tabuleiro) {
         this.tabuleiro = tabuleiro;
     }
@@ -52,9 +57,6 @@ public class Main extends Application {
         return this.idCartaMostrada;
     }
 
-    /**
-     * @param idCartaMostrada
-     */
     public void setIdCartaMostrada(int idCartaMostrada) {
         this.idCartaMostrada = idCartaMostrada;
     }
@@ -89,11 +91,15 @@ public class Main extends Application {
     public void showBotoesCarta() {
         setImgVisible(ID_BOTAO_CONFIRMAR);
         setImgVisible(ID_BOTAO_CANCELAR);
+        setImgVisible(ID_CARTA_SELECIONADA);
+        this.botoesCartaDisponiveis = true;
     }
 
     public void hideBotoesCarta() {
         setImgGone(ID_BOTAO_CONFIRMAR);
         setImgGone(ID_BOTAO_CANCELAR);
+        setImgGone(ID_CARTA_SELECIONADA);
+        this.botoesCartaDisponiveis = false;
     }
 
     private void setImgVisible(String id) {
@@ -131,56 +137,144 @@ public class Main extends Application {
     }
 
     public void receberSolicitacaoInicio() {
-        // TODO - implement Main3.receberSolicitacaoInicio
-        throw new UnsupportedOperationException();
+        Tabuleiro tabuleiro = new Tabuleiro();
+        Jogador jogador = initJogador();
+        jogador.setIdHeroi(mIdHeroijogador);
+        tabuleiro.setJogador1(jogador);
+        if (procurou) {
+            InformacoesIniciais informacoesIniciais = new InformacoesIniciais();
+            informacoesIniciais.setIdHeroi(mIdHeroijogador);
+            //TODO chamar enviarJogada do netgames
+        }
     }
 
-    public void receberJogada(Jogada jogada) {
-        // TODO - implement Main3.receberJogada
-        throw new UnsupportedOperationException();
+    private Jogador initJogador() {
+        Jogador jogador = new Jogador();
+        jogador.setPhHabilitado(true);
+        jogador.setManaAtual(0);
+        jogador.setManaMaxima(0);
+        jogador.setPontosDeVida(30);
+        return jogador;
     }
 
-    public void prepararMaosPrimeiroTurno() {
-        // TODO - implement Main3.prepararMaosPrimeiroTurno
-        throw new UnsupportedOperationException();
+    public void receberJogada(Jogada jogada) throws Exception {
+        if (jogada instanceof InformacoesIniciais) {
+            Jogador jogador2 = initJogador();
+            jogador2.setIdHeroi(((InformacoesIniciais) jogada).getIdHeroi());
+            tabuleiro.setJogador2(jogador2);
+            if (!procurou) {
+                InformacoesIniciais informacoesIniciais = new InformacoesIniciais();
+                informacoesIniciais.setIdHeroi(tabuleiro.getJogador1().getIdHeroi());
+                //TODO chamar enviarJogada do netgames
+            }
+
+            prepararMaosPrimeiroTurno();
+        } else {
+            InformacoesJogada informacoesJogada = (InformacoesJogada) jogada;
+            tabuleiro.setIdCartaPosicoesJogador1(informacoesJogada.getIdCartasNoCampo2());
+            tabuleiro.setIdCartaPosicoesJogador2(informacoesJogada.getIdCartasNoCampo1());
+            tabuleiro.getJogador1().setPontosDeVida(informacoesJogada.getVidaJogador2());
+            tabuleiro.getJogador2().setPontosDeVida(informacoesJogada.getVidaJogador1());
+            if (acabou) {
+                if (tabuleiro.getJogador2().getPontosDeVida() <= 0) {
+                    ganhou = false;
+                } else {
+                    ganhou = true;
+                }
+                endGameIfNeeded();
+            }
+        }
+    }
+
+    private void endGameIfNeeded() throws Exception {
+        if (acabou) {
+            showResultadoJogo();
+
+            //TODO chamar netgames desconectar
+        }
+    }
+
+    public void prepararMaosPrimeiroTurno() throws Exception {
+        goToTelaJogo();
+        for (int i = 0; i < 3; i++) {
+            tabuleiro.getJogador1().comprarCarta();
+        }
+        if (!procurou) {
+            tabuleiro.getJogador1().comprarCarta();
+            tabuleiro.getJogador1().receberMoeda();
+        } else {
+            prepararInicioTurno();
+        }
     }
 
     public void prepararInicioTurno() {
-        // TODO - implement Main3.prepararInicioTurno
-        throw new UnsupportedOperationException();
+        Jogador jogador1 = getTabuleiro().getJogador1();
+        jogador1.comprarCarta();
+        habilitarBotoes();
+        jogador1.setPhHabilitado(true);
+        int manaMax = jogador1.getManaMaxima();
+        if (manaMax < 10) {
+            jogador1.setManaMaxima(++manaMax);
+        }
+        jogador1.setManaAtual(manaMax);
     }
 
     public void usarPoderHeroico() {
-        // TODO - implement Main3.usarPoderHeroico
-        throw new UnsupportedOperationException();
+        Jogador jogador = getTabuleiro().getJogador1();
+        if (jogador.getPhHabilitado()) {
+            int manaAtual = jogador.getManaAtual();
+            if (manaAtual >= 2) {
+                jogador.setManaAtual(manaAtual - 2);
+                Efeito.aplicarEfeito(jogador.getHeroi().getPoderHeroico().getEfeito().getEfeitoId());
+                jogador.setPhHabilitado(false);
+            }
+        }
     }
 
-    /**
-     * @param idPosicaoMao
-     */
     public void abrirCarta(int idPosicaoMao) {
-        // TODO - implement Main3.abrirCarta
-        throw new UnsupportedOperationException();
+        idCartaMostrada = idPosicaoMao;
+        ImageView imageView = (ImageView) stage.getScene().lookup(ID_CARTA_SELECIONADA);
+        Image img = new Image(Carta.getCartaById(getTabuleiro().getJogador1().getIdCarta(idCartaMostrada)).getCaminhoImagem());
+        imageView.setImage(img);
+        showBotoesCarta();
     }
 
-    public void enviarJogada() {
-        // TODO - implement Main3.enviarJogada
-        throw new UnsupportedOperationException();
+    public void enviarJogada() throws Exception {
+        InformacoesJogada informacoesJogada = new InformacoesJogada();
+        informacoesJogada.setIdCartasNoCampo1(tabuleiro.getIdCartaPosicoesJogador1());
+        informacoesJogada.setIdCartasNoCampo2(tabuleiro.getIdCartaPosicoesJogador2());
+        informacoesJogada.setJogoAcabou(acabou);
+        informacoesJogada.setVidaJogador1(tabuleiro.getJogador1().getPontosDeVida());
+        informacoesJogada.setVidaJogador2(tabuleiro.getJogador2().getPontosDeVida());
+
+        endGameIfNeeded();
     }
 
-    public void promoverAtaques() {
-        // TODO - implement Main3.promoverAtaques
-        throw new UnsupportedOperationException();
+    public void promoverAtaques() throws Exception {
+        getTabuleiro().promoverAtaques();
+        verificaFimJogo();
     }
 
-    public void verificaFimJogo() {
-        // TODO - implement Main3.verificaFimJogo
-        throw new UnsupportedOperationException();
+    public void verificaFimJogo() throws Exception {
+        if (tabuleiro.getJogador1().getPontosDeVida() <= 0 || tabuleiro.getJogador2().getPontosDeVida() <= 0) {
+            acabou = true;
+            enviarJogada();
+        }
     }
 
-    public void showResultadoJogo() {
-        // TODO - implement Main3.showResultadoJogo
-        throw new UnsupportedOperationException();
+    public void showResultadoJogo() throws Exception {
+        if (ganhou) {
+            replaceSceneContent("ganhou.fxml");
+        } else {
+            replaceSceneContent("perdeu.fxml");
+        }
     }
 
+    public void recebeIdHeroi(Integer mIdHeroiSelecionado) {
+        mIdHeroijogador = mIdHeroiSelecionado;
+    }
+
+    public void atualizaTelaJogo() {
+        //TODO Atualizar tela de jogo
+    }
 }

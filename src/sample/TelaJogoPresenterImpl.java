@@ -20,53 +20,73 @@ public class TelaJogoPresenterImpl {
     }
 
     public void onCarta1Clicked(MouseEvent mouseEvent) {
-        // TODO - implement TelaJogoPresenterImpl.onCartaClicked
-        throw new UnsupportedOperationException();
+        if (Main.getInstance().botoesGeraisDisponiveis) {
+            // TODO - implement TelaJogoPresenterImpl.onCartaClicked
+            throw new UnsupportedOperationException();
+        }
     }
 
     public void onCarta2Clicked(MouseEvent mouseEvent) {
-        // TODO - implement TelaJogoPresenterImpl.onCartaClicked
-        throw new UnsupportedOperationException();
+        if (Main.getInstance().botoesGeraisDisponiveis) {
+            // TODO - implement TelaJogoPresenterImpl.onCartaClicked
+            throw new UnsupportedOperationException();
+        }
     }
 
     public void onCarta3Clicked(MouseEvent mouseEvent) {
-        // TODO - implement TelaJogoPresenterImpl.onCartaClicked
-        throw new UnsupportedOperationException();
+        if (Main.getInstance().botoesGeraisDisponiveis) {
+            // TODO - implement TelaJogoPresenterImpl.onCartaClicked
+            throw new UnsupportedOperationException();
+        }
     }
 
     public void onCarta4Clicked(MouseEvent mouseEvent) {
-        // TODO - implement TelaJogoPresenterImpl.onCartaClicked
-        throw new UnsupportedOperationException();
+        if (Main.getInstance().botoesGeraisDisponiveis) {
+            // TODO - implement TelaJogoPresenterImpl.onCartaClicked
+            throw new UnsupportedOperationException();
+        }
     }
 
     public void onCarta5Clicked(MouseEvent mouseEvent) {
-        // TODO - implement TelaJogoPresenterImpl.onCartaClicked
-        throw new UnsupportedOperationException();
+        if (Main.getInstance().botoesGeraisDisponiveis) {
+            // TODO - implement TelaJogoPresenterImpl.onCartaClicked
+            throw new UnsupportedOperationException();
+        }
     }
 
     public void onCarta6Clicked(MouseEvent mouseEvent) {
-        // TODO - implement TelaJogoPresenterImpl.onCartaClicked
-        throw new UnsupportedOperationException();
+        if (Main.getInstance().botoesGeraisDisponiveis) {
+            // TODO - implement TelaJogoPresenterImpl.onCartaClicked
+            throw new UnsupportedOperationException();
+        }
     }
 
     public void onDesistirClicked(MouseEvent mouseEvent) {
-        // TODO - implement TelaJogoPresenterImpl.onDesistirClicked
-        throw new UnsupportedOperationException();
+        if (Main.getInstance().botoesGeraisDisponiveis) {
+            // TODO - implement TelaJogoPresenterImpl.onCartaClicked
+            throw new UnsupportedOperationException();
+        }
     }
 
     public void onFinalizarTurnoClicked(MouseEvent mouseEvent) {
-        // TODO - implement TelaJogoPresenterImpl.onFinalizarTurnoClicked
-        throw new UnsupportedOperationException();
+        if (Main.getInstance().botoesGeraisDisponiveis) {
+            // TODO - implement TelaJogoPresenterImpl.onCartaClicked
+            throw new UnsupportedOperationException();
+        }
     }
 
     public void onCancelarClicked(MouseEvent mouseEvent) {
-        // TODO - implement TelaJogoPresenterImpl.onCancelarClicked
-        throw new UnsupportedOperationException();
+        if (Main.getInstance().botoesCartaDisponiveis) {
+            // TODO - implement TelaJogoPresenterImpl.onCartaClicked
+            throw new UnsupportedOperationException();
+        }
     }
 
     public void onConfirmarClicked(MouseEvent mouseEvent) {
-        // TODO - implement TelaJogoPresenterImpl.onConfirmarClicked
-        throw new UnsupportedOperationException();
+        if (Main.getInstance().botoesCartaDisponiveis) {
+            // TODO - implement TelaJogoPresenterImpl.onCartaClicked
+            throw new UnsupportedOperationException();
+        }
     }
 
 }

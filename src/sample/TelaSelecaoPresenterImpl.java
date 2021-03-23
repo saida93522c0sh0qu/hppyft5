@@ -3,6 +3,7 @@ package sample;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import sample.entity.Heroi;
 
 /**
  * Created by Léo on 25/06/2017.
@@ -79,6 +80,8 @@ public class TelaSelecaoPresenterImpl {
             procurarPartidaButton.setOpacity(OPACITY_SELECTED);
 
             mHeroiConfirmado = true;
+
+            Main.getInstance().recebeIdHeroi(mIdHeroiSelecionado);
 
             //TODO Mandar conectar
         }

@@ -1,12 +1,28 @@
 package sample.entity;
 
-import javafx.scene.image.ImageView;
-
 public class Heroi {
 
+    protected int id;
     protected PoderHeroico poderHeroico;
     protected Baralho baralho;
-    protected ImageView img;
+    protected String caminhoImg;
+
+    public Heroi(PoderHeroico poderHeroico, Baralho baralho, String caminhoImg) {
+        this.poderHeroico = poderHeroico;
+        this.baralho = baralho;
+        this.caminhoImg = Carta.CARTA_IMG_PATH + caminhoImg;
+    }
+
+    public Heroi() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public PoderHeroico getPoderHeroico() {
         return poderHeroico;
@@ -24,11 +40,16 @@ public class Heroi {
         this.baralho = baralho;
     }
 
-    public ImageView getImg() {
-        return img;
+    public String getCaminhoImg() {
+        return caminhoImg;
     }
 
-    public void setImg(ImageView img) {
-        this.img = img;
+    public void setCaminhoImg(String caminhoImg) {
+        this.caminhoImg = Carta.CARTA_IMG_PATH + caminhoImg;
+    }
+
+    public static Heroi getHeroiById(int idHeroi) {
+        //TODO FAZER SWITCH DOS HEROI AQUI
+        return null;
     }
 }

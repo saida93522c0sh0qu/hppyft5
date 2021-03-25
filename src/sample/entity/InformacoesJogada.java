@@ -2,50 +2,67 @@ package sample.entity;
 
 public class InformacoesJogada implements Jogada {
 
-    protected Integer[] idCartasNoCampo1;
-    protected int vidaJogador1;
-    protected int vidaJogador2;
-    protected Integer[] idCartasNoCampo2;
+    protected int vidaJogador;
+    protected int vidaAdversario;
+    protected Integer[] idCartasNoCampoJogador;
+    protected Integer[] idCartasNoCampoAdversario;
+    protected Integer[] vidaLacaiosJogador;
+    protected Integer[] vidaLacaiosAdversario;
     protected boolean jogoAcabou;
 
-    public Integer[] getIdCartasNoCampo1() {
-        return this.idCartasNoCampo1;
+    public Integer[] getIdCartasNoCampoJogador() {
+        return this.idCartasNoCampoJogador;
     }
 
-    public void setIdCartasNoCampo1(Integer[] idCartasNoCampo1) {
-        this.idCartasNoCampo1 = idCartasNoCampo1;
+    public void setIdCartasNoCampoJogador(Integer[] idCartasNoCampoJogador) {
+        this.idCartasNoCampoJogador = idCartasNoCampoJogador;
     }
 
-    public int getVidaJogador1() {
-        return this.vidaJogador1;
+    public int getVidaJogador() {
+        return this.vidaJogador;
     }
 
-    public void setVidaJogador1(int vidaJogador1) {
-        this.vidaJogador1 = vidaJogador1;
+    public void setVidaJogador(int vidaJogador) {
+        this.vidaJogador = vidaJogador;
     }
 
-    public int getVidaJogador2() {
-        return this.vidaJogador2;
+    public int getVidaAdversario() {
+        return this.vidaAdversario;
     }
 
-    public void setVidaJogador2(int vidaJogador2) {
-        this.vidaJogador2 = vidaJogador2;
+    public void setVidaAdversario(int vidaAdversario) {
+        this.vidaAdversario = vidaAdversario;
     }
 
-    public Integer[] getIdCartasNoCampo2() {
-        return this.idCartasNoCampo2;
+    public Integer[] getIdCartasNoCampoAdversario() {
+        return this.idCartasNoCampoAdversario;
     }
 
-    public void setIdCartasNoCampo2(Integer[] idCartasNoCampo2) {
-        this.idCartasNoCampo2 = idCartasNoCampo2;
+    public void setIdCartasNoCampoAdversario(Integer[] idCartasNoCampoAdversario) {
+        this.idCartasNoCampoAdversario = idCartasNoCampoAdversario;
     }
 
-    public boolean getJogoAcabou() {
-        return this.jogoAcabou;
+    public Integer[] getVidaLacaiosJogador() {
+        return vidaLacaiosJogador;
+    }
+
+    public void setVidaLacaiosJogador(Integer[] vidaLacaiosJogador) {
+        this.vidaLacaiosJogador = vidaLacaiosJogador;
+    }
+
+    public Integer[] getVidaLacaiosAdversario() {
+        return vidaLacaiosAdversario;
+    }
+
+    public void setVidaLacaiosAdversario(Integer[] vidaLacaiosAdversario) {
+        this.vidaLacaiosAdversario = vidaLacaiosAdversario;
+    }
+
+    public boolean isJogoAcabou() {
+        return jogoAcabou;
     }
 
     public void setJogoAcabou(boolean jogoAcabou) {
         this.jogoAcabou = jogoAcabou;
     }
-
 }

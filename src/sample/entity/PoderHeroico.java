@@ -4,15 +4,23 @@ import javafx.scene.image.ImageView;
 
 public class PoderHeroico {
 
-    protected ImageView img;
+    protected String caminhoImg;
     protected Efeito efeito;
 
-    public ImageView getImg() {
-        return img;
+    public PoderHeroico(String caminhoImg, Efeito efeito) {
+        this.caminhoImg = caminhoImg;
+        this.efeito = efeito;
     }
 
-    public void setImg(ImageView img) {
-        this.img = img;
+    public PoderHeroico() {
+    }
+
+    public String getCaminhoImg() {
+        return caminhoImg;
+    }
+
+    public void setCaminhoImg(String caminhoImg) {
+        this.caminhoImg = caminhoImg;
     }
 
     public Efeito getEfeito() {

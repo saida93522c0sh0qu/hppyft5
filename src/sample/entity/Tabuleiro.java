@@ -4,51 +4,54 @@ import sample.Main;
 
 public class Tabuleiro {
 
-    protected Jogador jogador1;
-    protected Jogador jogador2;
-    protected CartaLacaio[] cartaPosicoesJogador1;
-    protected CartaLacaio[] cartaPosicoesJogador2;
-//    protected Integer[] idCartaPosicoesJogador1;
-//    protected Integer[] idCartaPosicoesJogador2;
+    protected Jogador jogador;
+    protected Jogador adversario;
+    protected CartaLacaio[] cartaPosicoesJogador;
+    protected CartaLacaio[] cartaPosicoesAdversario;
 
-    public Jogador getJogador1() {
-        return this.jogador1;
+    public Tabuleiro() {
+        this.cartaPosicoesJogador = new CartaLacaio[5];
+        this.cartaPosicoesAdversario = new CartaLacaio[5];
     }
 
-    public void setJogador1(Jogador jogador1) {
-        this.jogador1 = jogador1;
+    public Jogador getJogador() {
+        return this.jogador;
     }
 
-    public Jogador getJogador2() {
-        return this.jogador2;
+    public void setJogador(Jogador jogador) {
+        this.jogador = jogador;
     }
 
-    public void setJogador2(Jogador jogador2) {
-        this.jogador2 = jogador2;
+    public Jogador getAdversario() {
+        return this.adversario;
     }
 
-    public CartaLacaio[] getCartaPosicoesJogador1() {
-        return cartaPosicoesJogador1;
+    public void setAdversario(Jogador adversario) {
+        this.adversario = adversario;
     }
 
-    public void setCartaPosicoesJogador1(CartaLacaio[] cartaPosicoesJogador1) {
-        this.cartaPosicoesJogador1 = cartaPosicoesJogador1;
+    public CartaLacaio[] getCartaPosicoesJogador() {
+        return cartaPosicoesJogador;
     }
 
-    public CartaLacaio[] getCartaPosicoesJogador2() {
-        return cartaPosicoesJogador2;
+    public void setCartaPosicoesJogador(CartaLacaio[] cartaPosicoesJogador) {
+        this.cartaPosicoesJogador = cartaPosicoesJogador;
     }
 
-    public void setCartaPosicoesJogador2(CartaLacaio[] cartaPosicoesJogador2) {
-        this.cartaPosicoesJogador2 = cartaPosicoesJogador2;
+    public CartaLacaio[] getCartaPosicoesAdversario() {
+        return cartaPosicoesAdversario;
+    }
+
+    public void setCartaPosicoesAdversario(CartaLacaio[] cartaPosicoesAdversario) {
+        this.cartaPosicoesAdversario = cartaPosicoesAdversario;
     }
 
     public Integer[] getIdCartaPosicoesJogador1() {
-        return getIdCartas(cartaPosicoesJogador1);
+        return getIdCartas(cartaPosicoesJogador);
     }
 
     public Integer[] getIdCartaPosicoesJogador2() {
-        return getIdCartas(cartaPosicoesJogador2);
+        return getIdCartas(cartaPosicoesAdversario);
     }
 
     private Integer[] getIdCartas(CartaLacaio[] arrayLacaios) {
@@ -65,11 +68,11 @@ public class Tabuleiro {
     }
 
     public void setIdCartaPosicoesJogador1(Integer[] idCartas) {
-        setIdCartas(idCartas, cartaPosicoesJogador1);
+        setIdCartas(idCartas, cartaPosicoesJogador);
     }
 
     public void setIdCartaPosicoesJogador2(Integer[] idCartas) {
-        setIdCartas(idCartas, cartaPosicoesJogador2);
+        setIdCartas(idCartas, cartaPosicoesAdversario);
     }
 
     private void setIdCartas(Integer[] idCartas, CartaLacaio[] cartas) {
@@ -84,10 +87,10 @@ public class Tabuleiro {
     }
 
     public boolean adicionaLacaio(int idCarta) {
-        for (int i = 0; i < cartaPosicoesJogador1.length; i++) {
-            Carta carta = cartaPosicoesJogador1[i];
+        for (int i = 0; i < cartaPosicoesJogador.length; i++) {
+            Carta carta = cartaPosicoesJogador[i];
             if (carta == null) {
-                cartaPosicoesJogador1[i] = Carta.getCartaById(idCarta);
+                cartaPosicoesJogador[i] = Carta.getCartaById(idCarta);
                 Main.getInstance().atualizaTelaJogo();
                 return true;
             }
@@ -96,30 +99,64 @@ public class Tabuleiro {
     }
 
     public void limparLacaiosInimigos() {
-        for (int i = 0; i < cartaPosicoesJogador2.length; i++) {
-            cartaPosicoesJogador2[i] = null;
+        for (int i = 0; i < cartaPosicoesAdversario.length; i++) {
+            cartaPosicoesAdversario[i] = null;
         }
     }
 
     public void promoverAtaques() {
-        for (int i = 0; i < cartaPosicoesJogador1.length; i++) {
-            CartaLacaio cartaJogador = cartaPosicoesJogador1[i];
+        for (int i = 0; i < cartaPosicoesJogador.length; i++) {
+            CartaLacaio cartaJogador = cartaPosicoesJogador[i];
             if (cartaJogador != null) {
-                CartaLacaio cartaAdversario = cartaPosicoesJogador2[i];
+                CartaLacaio cartaAdversario = cartaPosicoesAdversario[i];
                 if (cartaAdversario != null) {
                     cartaJogador.setVida(cartaJogador.getVida() - cartaAdversario.getAtaque());
                     cartaAdversario.setVida(cartaAdversario.getVida() - cartaJogador.getAtaque());
                     if (cartaJogador.getVida() <= 0) {
-                        cartaPosicoesJogador1[i] = null;
+                        cartaPosicoesJogador[i] = null;
 //                        idCartaPosicoesJogador1[i] = null;
                     }
                     if (cartaAdversario.getVida() <= 0) {
-                        cartaPosicoesJogador2[i] = null;
+                        cartaPosicoesAdversario[i] = null;
 //                        idCartaPosicoesJogador2[i] = null;
                     }
                 } else {
-                    jogador2.setPontosDeVida(jogador2.getPontosDeVida() - cartaJogador.getAtaque());
+                    adversario.setPontosDeVida(adversario.getPontosDeVida() - cartaJogador.getAtaque());
                 }
+            }
+        }
+    }
+
+    public Integer[] getVidaLacaiosJogador() {
+        return getVidaCartas(cartaPosicoesJogador);
+    }
+
+    public Integer[] getVidaLacaiosAdversario() {
+        return getVidaCartas(cartaPosicoesAdversario);
+    }
+
+    private Integer[] getVidaCartas(CartaLacaio[] cartas) {
+        Integer[] vidas = new Integer[5];
+        for (int i = 0; i < cartas.length; i++) {
+            if (cartas[i] != null) {
+                vidas[i] = cartas[i].getVida();
+            }
+        }
+        return vidas;
+    }
+
+    public void setVidaLacaiosJogador(Integer[] vidaLacaiosJogador) {
+        setVidaCartas(vidaLacaiosJogador, cartaPosicoesJogador);
+    }
+
+    public void setVidaLacaiosAdversario(Integer[] vidaLacaiosAdversario) {
+        setVidaCartas(vidaLacaiosAdversario, cartaPosicoesAdversario);
+    }
+
+    private void setVidaCartas(Integer[] vidas, CartaLacaio[] cartas) {
+        for (int i = 0; i < cartas.length; i++) {
+            if (cartas[i] != null) {
+                cartas[i].setVida(vidas[i]);
             }
         }
     }

@@ -45,38 +45,38 @@
                 <Font size="18.0"/>
             </font>
         </Label>
-        <ImageView fx:id="carta_1" fitHeight="115.0" fitWidth="73.0" layoutY="516.0" onMouseClicked="#onCarta1Clicked"
+        <ImageView fx:id="carta_1" fitHeight="115.0" fitWidth="73.0" layoutY="516.0" onMouseClicked="#onCarta0Clicked"
                    pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@images/carta_teste.png"/>
             </image>
         </ImageView>
         <ImageView fx:id="carta_2" fitHeight="104.0" fitWidth="73.0" layoutX="73.0" layoutY="516.0"
-                   onMouseClicked="#onCarta2Clicked" pickOnBounds="true" preserveRatio="true">
+                   onMouseClicked="#onCarta1Clicked" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@images/carta_teste.png"/>
             </image>
         </ImageView>
         <ImageView fx:id="carta_3" fitHeight="104.0" fitWidth="73.0" layoutX="146.0" layoutY="516.0"
-                   onMouseClicked="#onCarta3Clicked" pickOnBounds="true" preserveRatio="true">
+                   onMouseClicked="#onCarta2Clicked" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@images/carta_teste.png"/>
             </image>
         </ImageView>
         <ImageView fx:id="carta_4" fitHeight="104.0" fitWidth="73.0" layoutX="219.0" layoutY="518.0"
-                   onMouseClicked="#onCarta4Clicked" pickOnBounds="true" preserveRatio="true">
+                   onMouseClicked="#onCarta3Clicked" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@images/carta_teste.png"/>
             </image>
         </ImageView>
         <ImageView fx:id="carta_5" fitHeight="104.0" fitWidth="73.0" layoutX="292.0" layoutY="518.0"
-                   onMouseClicked="#onCarta5Clicked" pickOnBounds="true" preserveRatio="true">
+                   onMouseClicked="#onCarta4Clicked" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@images/carta_teste.png"/>
             </image>
         </ImageView>
         <ImageView fx:id="carta_6" fitHeight="104.0" fitWidth="73.0" layoutX="365.0" layoutY="518.0"
-                   onMouseClicked="#onCarta6Clicked" pickOnBounds="true" preserveRatio="true">
+                   onMouseClicked="#onCarta5Clicked" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@images/carta_teste.png"/>
             </image>

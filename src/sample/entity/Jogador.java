@@ -1,5 +1,7 @@
 package sample.entity;
 
+import sample.Main;
+
 public class Jogador {
 
     protected Heroi heroi;
@@ -31,6 +33,7 @@ public class Jogador {
 
     public void setPontosDeVida(int pontosDeVida) {
         this.pontosDeVida = pontosDeVida;
+        Main.getInstance().atualizaVidaJogadores();
     }
 
     public void comprarCarta() {
@@ -39,6 +42,8 @@ public class Jogador {
             for (int i = 0; i < mao.length; i++) {
                 if (mao[i] == null) {
                     mao[i] = Carta.getCartaById(idCarta);
+                    Main.getInstance().atualizaMaoJogador();
+                    return;
                 }
             }
         } else {
@@ -50,6 +55,7 @@ public class Jogador {
         for (int i = 0; i < mao.length; i++) {
             if (mao[i] == null) {
                 mao[i] = Carta.getCartaById(1);
+                Main.getInstance().atualizaMaoJogador();
             }
         }
     }
@@ -68,10 +74,12 @@ public class Jogador {
 
     public void setManaAtual(int manaAtual) {
         this.manaAtual = manaAtual;
+        Main.getInstance().atualizaManaJogador();
     }
 
     public void removeCarta(int idPosicao) {
         this.mao[idPosicao] = null;
+        Main.getInstance().atualizaMaoJogador();
     }
 
     public int getManaMaxima() {
@@ -80,6 +88,7 @@ public class Jogador {
 
     public void setManaMaxima(int manaMaxima) {
         this.manaMaxima = manaMaxima;
+        Main.getInstance().atualizaManaJogador();
     }
 
     public Heroi getHeroi() {

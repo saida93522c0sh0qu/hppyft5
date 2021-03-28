@@ -14,7 +14,8 @@ public class Baralho {
 
     public Integer retiraCarta() {
         if (cartasRestantes > 0) {
-            int idCarta = (int) Math.round(Math.random() * cartasRestantes);
+            Integer idCarta = (int) Math.round(Math.random() * cartasRestantes);
+            cartas.remove(idCarta);
             cartasRestantes--;
             return idCarta;
         } else {

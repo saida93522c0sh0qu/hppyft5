@@ -67,12 +67,14 @@ public class Tabuleiro {
         return idCartas;
     }
 
-    public void setIdCartaPosicoesJogador1(Integer[] idCartas) {
+    public void setIdCartaPosicoesJogador(Integer[] idCartas) {
         setIdCartas(idCartas, cartaPosicoesJogador);
+        Main.getInstance().atualizaMesaJogador();
     }
 
-    public void setIdCartaPosicoesJogador2(Integer[] idCartas) {
+    public void setIdCartaPosicoesAdversario(Integer[] idCartas) {
         setIdCartas(idCartas, cartaPosicoesAdversario);
+        Main.getInstance().atualizaMesaAdversario();
     }
 
     private void setIdCartas(Integer[] idCartas, CartaLacaio[] cartas) {
@@ -86,11 +88,11 @@ public class Tabuleiro {
         }
     }
 
-    public boolean adicionaLacaio(int idCarta) {
+    public boolean adicionaLacaio(CartaLacaio cartalacaio) {
         for (int i = 0; i < cartaPosicoesJogador.length; i++) {
-            Carta carta = cartaPosicoesJogador[i];
-            if (carta == null) {
-                cartaPosicoesJogador[i] = Carta.getCartaById(idCarta);
+            CartaLacaio cartaAtual = cartaPosicoesJogador[i];
+            if (cartaAtual == null) {
+                cartaPosicoesJogador[i] = cartalacaio;
                 Main.getInstance().atualizaTelaJogo();
                 return true;
             }
@@ -102,6 +104,7 @@ public class Tabuleiro {
         for (int i = 0; i < cartaPosicoesAdversario.length; i++) {
             cartaPosicoesAdversario[i] = null;
         }
+        Main.getInstance().atualizaMesaAdversario();
     }
 
     public void promoverAtaques() {
@@ -114,14 +117,15 @@ public class Tabuleiro {
                     cartaAdversario.setVida(cartaAdversario.getVida() - cartaJogador.getAtaque());
                     if (cartaJogador.getVida() <= 0) {
                         cartaPosicoesJogador[i] = null;
-//                        idCartaPosicoesJogador1[i] = null;
                     }
                     if (cartaAdversario.getVida() <= 0) {
                         cartaPosicoesAdversario[i] = null;
-//                        idCartaPosicoesJogador2[i] = null;
                     }
+                    Main.getInstance().atualizaMesaJogador();
+                    Main.getInstance().atualizaMesaAdversario();
                 } else {
-                    adversario.setPontosDeVida(adversario.getPontosDeVida() - cartaJogador.getAtaque());
+                    Efeito.aplicarEfeito(Efeito.DANO_HEROI_INIMIGO, cartaJogador.getAtaque());
+
                 }
             }
         }
@@ -147,10 +151,12 @@ public class Tabuleiro {
 
     public void setVidaLacaiosJogador(Integer[] vidaLacaiosJogador) {
         setVidaCartas(vidaLacaiosJogador, cartaPosicoesJogador);
+        Main.getInstance().atualizaMesaJogador();
     }
 
     public void setVidaLacaiosAdversario(Integer[] vidaLacaiosAdversario) {
         setVidaCartas(vidaLacaiosAdversario, cartaPosicoesAdversario);
+        Main.getInstance().atualizaMesaAdversario();
     }
 
     private void setVidaCartas(Integer[] vidas, CartaLacaio[] cartas) {

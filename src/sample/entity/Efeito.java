@@ -22,6 +22,14 @@ public class Efeito {
         return efeitoId;
     }
 
+    public int getQtdEfeito() {
+        return qtdEfeito;
+    }
+
+    public static void aplicarEfeito(Efeito efeito) {
+        aplicarEfeito(efeito.getEfeitoId(), efeito.getQtdEfeito());
+    }
+
     public static void aplicarEfeito(int efeitoId, int qtdEfeito) {
         switch (efeitoId) {
             case DANO_HEROI_INIMIGO:
@@ -45,7 +53,6 @@ public class Efeito {
                 Main.getInstance().getTabuleiro().getJogador().setPontosDeVida(ptsVidaJogador - qtdEfeito);
                 break;
         }
-        Main.getInstance().atualizaTelaJogo();
     }
 
 }

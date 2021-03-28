@@ -1,5 +1,7 @@
 package sample.entity;
 
+import sample.bd.CartaBD;
+
 public abstract class Carta {
 
     public static final String CARTA_IMG_PATH = "\\src\\sample\\images\\";
@@ -18,8 +20,7 @@ public abstract class Carta {
     }
 
     public static <T extends Carta> T getCartaById(int idCarta) {
-        // TODO - implement Carta.getCartaById
-        throw new UnsupportedOperationException();
+        return CartaBD.getCartaById(idCarta);
     }
 
     public int getCustoMana() {

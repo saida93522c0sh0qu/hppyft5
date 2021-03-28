@@ -21,13 +21,9 @@ public class TelaSelecaoPresenterImpl {
     protected Integer mIdHeroiSelecionado = null;
     protected boolean mHeroiConfirmado = false;
 
-    public void onProcurarPartidaClicked(MouseEvent mouseEvent) {
+    public void onProcurarPartidaClicked(MouseEvent mouseEvent) throws Exception {
         //TODO Aqui vamos chamar o esquema de procurar partida do netgames
-        try {
-            Main.getInstance().goToTelaJogo();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Main.getInstance().goToTelaJogo();
     }
 
     public void onBruxoSelecaoClicked(MouseEvent mouseEvent) {

@@ -34,13 +34,24 @@ public class Jogador {
     }
 
     public void comprarCarta() {
-        // TODO - implement Jogador.comprarCarta
-        throw new UnsupportedOperationException();
+        Integer idCarta = heroi.getBaralho().retiraCarta();
+        if (idCarta > 0) {
+            for (int i = 0; i < mao.length; i++) {
+                if (mao[i] == null) {
+                    mao[i] = Carta.getCartaById(idCarta);
+                }
+            }
+        } else {
+            Efeito.aplicarEfeito(Efeito.DANO_HEROI_JOGADOR, idCarta);
+        }
     }
 
     public void receberMoeda() {
-        // TODO - implement Jogador.receberMoeda
-        throw new UnsupportedOperationException();
+        for (int i = 0; i < mao.length; i++) {
+            if (mao[i] == null) {
+                mao[i] = Carta.getCartaById(1);
+            }
+        }
     }
 
     public boolean isPhHabilitado() {
@@ -59,14 +70,8 @@ public class Jogador {
         this.manaAtual = manaAtual;
     }
 
-    public int getIdCarta(int idPosicao) {
-        // TODO - implement Jogador.getIdCarta
-        throw new UnsupportedOperationException();
-    }
-
     public void removeCarta(int idPosicao) {
-        // TODO - implement Jogador.removeCarta
-        throw new UnsupportedOperationException();
+        this.mao[idPosicao] = null;
     }
 
     public int getManaMaxima() {
@@ -83,9 +88,5 @@ public class Jogador {
 
     public Carta[] getMao() {
         return mao;
-    }
-
-    public void setMao(Carta[] mao) {
-        this.mao = mao;
     }
 }

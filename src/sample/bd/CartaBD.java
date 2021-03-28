@@ -10,7 +10,7 @@ public abstract class CartaBD {
     public static <T extends Carta> T getCartaById(int id) {
         switch (id) {
             case 1:
-                return (T) new CartaFeitico(id, 0, "carta_moeda.png", new Efeito(Efeito.GANHA_MANA));
+                return (T) new CartaFeitico(id, 0, "carta_moeda.png", new Efeito(Efeito.GANHA_MANA, 1));
             case 2:
                 return (T) new CartaLacaio(id, 2, "carta_crocolisco.png", 2, 3);
             case 3:

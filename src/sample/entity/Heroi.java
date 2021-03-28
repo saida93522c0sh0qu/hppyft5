@@ -1,5 +1,7 @@
 package sample.entity;
 
+import sample.bd.HeroiBD;
+
 public class Heroi {
 
     protected int id;
@@ -13,43 +15,24 @@ public class Heroi {
         this.caminhoImg = Carta.CARTA_IMG_PATH + caminhoImg;
     }
 
-    public Heroi() {
-    }
-
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public PoderHeroico getPoderHeroico() {
         return poderHeroico;
     }
 
-    public void setPoderHeroico(PoderHeroico poderHeroico) {
-        this.poderHeroico = poderHeroico;
-    }
-
     public Baralho getBaralho() {
         return baralho;
-    }
-
-    public void setBaralho(Baralho baralho) {
-        this.baralho = baralho;
     }
 
     public String getCaminhoImg() {
         return caminhoImg;
     }
 
-    public void setCaminhoImg(String caminhoImg) {
-        this.caminhoImg = Carta.CARTA_IMG_PATH + caminhoImg;
-    }
 
     public static Heroi getHeroiById(int idHeroi) {
-        //TODO FAZER SWITCH DOS HEROI AQUI
-        return null;
+        return HeroiBD.getHeroiById(idHeroi);
     }
 }

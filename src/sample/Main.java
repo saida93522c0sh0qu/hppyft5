@@ -1,5 +1,6 @@
 package sample;
 
+import br.ufsc.inf.leobr.cliente.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.JavaFXBuilderFactory;
@@ -10,6 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import sample.entity.*;
+import sample.netgames.AtorRede;
 
 public class Main extends Application {
 
@@ -153,7 +155,7 @@ public class Main extends Application {
     }
 
     public void procurarPartida() {
-        //TODO Chamar procurar partida do netgames
+        AtorRede.getInstance().buscarPartida();
     }
 
     public void receberSolicitacaoInicio() {
@@ -164,11 +166,11 @@ public class Main extends Application {
         if (procurou) {
             InformacoesIniciais informacoesIniciais = new InformacoesIniciais();
             informacoesIniciais.setIdHeroi(mIdHeroijogador);
-            //TODO chamar enviarJogada do netgames
+            AtorRede.getInstance().enviaJogada(informacoesIniciais);
         }
     }
 
-    public void receberJogada(Jogada jogada) throws Exception {
+    public void receberJogada(br.ufsc.inf.leobr.cliente.Jogada jogada) throws Exception {
         if (jogada instanceof InformacoesIniciais) {
             Jogador jogador2 = new Jogador();
             jogador2.setIdHeroi(((InformacoesIniciais) jogada).getIdHeroi());
@@ -176,18 +178,18 @@ public class Main extends Application {
             if (!procurou) {
                 InformacoesIniciais informacoesIniciais = new InformacoesIniciais();
                 informacoesIniciais.setIdHeroi(tabuleiro.getJogador().getIdHeroi());
-                //TODO chamar enviarJogada do netgames
+                AtorRede.getInstance().enviaJogada(informacoesIniciais);
             }
 
             prepararMaosPrimeiroTurno();
         } else {
             InformacoesJogada informacoesJogada = (InformacoesJogada) jogada;
-            tabuleiro.setIdCartaPosicoesJogador(informacoesJogada.getIdCartasNoCampoAdversario());
-            tabuleiro.setIdCartaPosicoesAdversario(informacoesJogada.getIdCartasNoCampoJogador());
+            tabuleiro.setIdCartaPosicoesJogador(JogadaUtils.IntToInteger(informacoesJogada.getIdCartasNoCampoAdversario()));
+            tabuleiro.setIdCartaPosicoesAdversario(JogadaUtils.IntToInteger(informacoesJogada.getIdCartasNoCampoJogador()));
             tabuleiro.getJogador().setPontosDeVida(informacoesJogada.getVidaAdversario());
             tabuleiro.getAdversario().setPontosDeVida(informacoesJogada.getVidaJogador());
-            tabuleiro.setVidaLacaiosJogador(informacoesJogada.getVidaLacaiosAdversario());
-            tabuleiro.setVidaLacaiosAdversario(informacoesJogada.getVidaLacaiosJogador());
+            tabuleiro.setVidaLacaiosJogador(JogadaUtils.IntToInteger(informacoesJogada.getVidaLacaiosAdversario()));
+            tabuleiro.setVidaLacaiosAdversario(JogadaUtils.IntToInteger(informacoesJogada.getVidaLacaiosJogador()));
             if (acabou) {
                 if (tabuleiro.getAdversario().getPontosDeVida() <= 0) {
                     ganhou = false;
@@ -205,7 +207,7 @@ public class Main extends Application {
         if (acabou) {
             showResultadoJogo();
 
-            //TODO chamar netgames desconectar
+            AtorRede.getInstance().desconectar();
         }
     }
 
@@ -275,13 +277,13 @@ public class Main extends Application {
 
     public void enviarJogada() throws Exception {
         InformacoesJogada informacoesJogada = new InformacoesJogada();
-        informacoesJogada.setIdCartasNoCampoJogador(tabuleiro.getIdCartaPosicoesJogador1());
-        informacoesJogada.setIdCartasNoCampoAdversario(tabuleiro.getIdCartaPosicoesJogador2());
+        informacoesJogada.setIdCartasNoCampoJogador(JogadaUtils.IntegerToInt(tabuleiro.getIdCartaPosicoesJogador1()));
+        informacoesJogada.setIdCartasNoCampoAdversario(JogadaUtils.IntegerToInt(tabuleiro.getIdCartaPosicoesJogador2()));
         informacoesJogada.setJogoAcabou(acabou);
         informacoesJogada.setVidaJogador(tabuleiro.getJogador().getPontosDeVida());
         informacoesJogada.setVidaAdversario(tabuleiro.getAdversario().getPontosDeVida());
-        informacoesJogada.setVidaLacaiosJogador(tabuleiro.getVidaLacaiosJogador());
-        informacoesJogada.setVidaLacaiosAdversario(tabuleiro.getVidaLacaiosAdversario());
+        informacoesJogada.setVidaLacaiosJogador(JogadaUtils.IntegerToInt(tabuleiro.getVidaLacaiosJogador()));
+        informacoesJogada.setVidaLacaiosAdversario(JogadaUtils.IntegerToInt(tabuleiro.getVidaLacaiosAdversario()));
 
         endGameIfNeeded();
     }
@@ -425,5 +427,14 @@ public class Main extends Application {
             tabuleiro.getJogador().removeCarta(posicaoMaoCartaMostrada);
         }
         cancelarCartaMostrada();
+    }
+
+    public void finalizarComErro() {
+        ganhou = true;
+        try {
+            showResultadoJogo();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

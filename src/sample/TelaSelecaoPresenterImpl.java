@@ -4,6 +4,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import sample.entity.Heroi;
+import sample.netgames.AtorRede;
 
 /**
  * Created by Léo on 25/06/2017.
@@ -22,8 +23,8 @@ public class TelaSelecaoPresenterImpl {
     protected boolean mHeroiConfirmado = false;
 
     public void onProcurarPartidaClicked(MouseEvent mouseEvent) throws Exception {
-        //TODO Aqui vamos chamar o esquema de procurar partida do netgames
         Main.getInstance().goToTelaJogo();
+        Main.getInstance().procurarPartida();
     }
 
     public void onBruxoSelecaoClicked(MouseEvent mouseEvent) {
@@ -79,7 +80,7 @@ public class TelaSelecaoPresenterImpl {
 
             Main.getInstance().recebeIdHeroi(mIdHeroiSelecionado);
 
-            //TODO Mandar conectar
+            AtorRede.getInstance().conectar();
         }
 
     }

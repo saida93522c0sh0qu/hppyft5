@@ -1,10 +1,11 @@
 package sample.entity;
 
+import br.ufsc.inf.leobr.cliente.EstadoProxy;
 import sample.bd.CartaBD;
 
 public abstract class Carta {
 
-    public static final String CARTA_IMG_PATH = "\\src\\sample\\images\\";
+    public static final String CARTA_IMG_PATH = "src\\sample\\images\\";
 
     protected int id;
     protected int custoMana;
@@ -46,4 +47,5 @@ public abstract class Carta {
     public void setId(int id) {
         this.id = id;
     }
+
 }

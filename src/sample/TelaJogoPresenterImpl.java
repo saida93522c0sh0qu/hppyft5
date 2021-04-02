@@ -4,6 +4,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 public class TelaJogoPresenterImpl {
 
     public void onPoderHeroicoClicked(MouseEvent mouseEvent) {
@@ -12,12 +16,19 @@ public class TelaJogoPresenterImpl {
         }
     }
 
-    public void onCartaMesa1Clicked(MouseEvent mouseEvent) {
+    public void onCartaMesa1Clicked(MouseEvent mouseEvent)  {
         //TODO TIRAR ISSO AKI DEPOIS
         ImageView imgView = (ImageView) Main.getInstance().stage.getScene().lookup("#carta_mesa_jogador_1");
 //        Image image1 = new Image("/src/sample/carta_teste2.png", 83.0, 118.0, false, false);
-        Image image1 = new Image("C:\\Users\\Léo\\IdeaProjects\\Hearthstone_APS_Alpha\\src\\sample\\carta_teste2.png");
-        imgView.setImage(null);
+
+        FileInputStream fis = null;
+        try {
+            fis = new FileInputStream(new File("carta_teste2.png"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        Image image1 = new Image(fis);
         imgView.setImage(image1);
         System.out.println("passou aki");
     }

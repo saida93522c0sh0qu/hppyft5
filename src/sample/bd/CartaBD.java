@@ -18,7 +18,6 @@ public abstract class CartaBD {
     private static final String CARTA_FOGO_LUNAR = "carta_fogo_lunar.png";
     private static final String CARTA_FURIANTE_MAGMA = "carta_furiante_magma.png";
     private static final String CARTA_GAIATO_MALIGNO = "carta_gaiato_maligno.png";
-    private static final String CARTA_GOLEM_GUERRA = "carta_golem_guerra.png";
     private static final String CARTA_INTELECTO_ARCANO = "carta_intelecto_arcano.png";
     private static final String CARTA_JAVALI_PEDRATUSCO = "carta_javali_pedratusco.png";
     private static final String CARTA_LUTADORA_FOSSO = "carta_lutadora_fosso.png";

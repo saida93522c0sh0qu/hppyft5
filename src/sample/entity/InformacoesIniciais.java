@@ -1,6 +1,6 @@
 package sample.entity;
 
-public class InformacoesIniciais implements Jogada {
+public class InformacoesIniciais implements br.ufsc.inf.leobr.cliente.Jogada{
 
 	protected int idHeroi;
 

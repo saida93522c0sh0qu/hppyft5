@@ -64,7 +64,7 @@ public class TelaSelecaoPresenterImpl {
     }
 
     public void onBotaoEscolhidoClicked(MouseEvent mouseEvent) {
-        if (!mHeroiConfirmado && mIdHeroiSelecionado != null) {
+        if (!mHeroiConfirmado && mIdHeroiSelecionado != null && Main.getInstance().conectar()) {
             Scene scene = Main.getInstance().stage.getScene();
             ImageView escolhaButton = (ImageView) scene.lookup(VIEW_ID_ESCOLHA_BUTTON);
             ImageView bruxoSelecao = (ImageView) scene.lookup(VIEW_ID_BRUXO_SELECAO);
@@ -79,8 +79,6 @@ public class TelaSelecaoPresenterImpl {
             mHeroiConfirmado = true;
 
             Main.getInstance().recebeIdHeroi(mIdHeroiSelecionado);
-
-            AtorRede.getInstance().conectar();
         }
 
     }

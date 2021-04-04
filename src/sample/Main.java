@@ -55,6 +55,7 @@ public class Main extends Application {
 
     protected Stage stage;
     private static Main instance;
+    protected AtorRede atorRede;
 
     protected Tabuleiro tabuleiro;
 
@@ -70,6 +71,7 @@ public class Main extends Application {
 
     public Main() {
         instance = this;
+        atorRede = new AtorRede();
     }
 
     public static Main getInstance() {
@@ -155,7 +157,7 @@ public class Main extends Application {
     }
 
     public void procurarPartida() {
-        AtorRede.getInstance().buscarPartida();
+        atorRede.buscarPartida();
     }
 
     public void receberSolicitacaoInicio() {
@@ -166,7 +168,7 @@ public class Main extends Application {
         if (procurou) {
             InformacoesIniciais informacoesIniciais = new InformacoesIniciais();
             informacoesIniciais.setIdHeroi(mIdHeroijogador);
-            AtorRede.getInstance().enviaJogada(informacoesIniciais);
+            atorRede.enviaJogada(informacoesIniciais);
         }
     }
 
@@ -178,7 +180,7 @@ public class Main extends Application {
             if (!procurou) {
                 InformacoesIniciais informacoesIniciais = new InformacoesIniciais();
                 informacoesIniciais.setIdHeroi(tabuleiro.getJogador().getIdHeroi());
-                AtorRede.getInstance().enviaJogada(informacoesIniciais);
+                atorRede.enviaJogada(informacoesIniciais);
             }
 
             prepararMaosPrimeiroTurno();
@@ -207,7 +209,8 @@ public class Main extends Application {
         if (acabou) {
             showResultadoJogo();
 
-            AtorRede.getInstance().desconectar();
+            atorRede.finalizarPartida();
+            atorRede.desconectar();
         }
     }
 
@@ -436,5 +439,9 @@ public class Main extends Application {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public boolean conectar() {
+        return atorRede.conectar();
     }
 }

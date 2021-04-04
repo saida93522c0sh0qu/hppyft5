@@ -7,35 +7,26 @@ import sample.Main;
 public class AtorRede implements OuvidorProxy {
 
     protected br.ufsc.inf.leobr.cliente.Proxy proxy;
-    private static AtorRede instance;
-    protected final String servidor = "netgames.labsoft.ufsc.br";
+    protected final String servidor = "localhost";
 
-    private AtorRede() {
+    public AtorRede() {
         proxy = Proxy.getInstance();
         proxy.addOuvinte(this);
-    }
-
-    public static AtorRede getInstance() {
-        if (instance == null) {
-            instance = new AtorRede();
-        }
-        return instance;
     }
 
     public String getServidor() {
         return this.servidor;
     }
 
-    public void conectar() {
+    public boolean conectar() {
+        boolean retorno = true;
         try {
-            proxy.conectar(servidor, "NomeJogador");
-        } catch (JahConectadoException e) {
-            e.printStackTrace();
-        } catch (NaoPossivelConectarException e) {
-            e.printStackTrace();
-        } catch (ArquivoMultiplayerException e) {
-            e.printStackTrace();
+            proxy.conectar(servidor, "NomeJogador" + Long.toString(Math.round(Math.random() * 1000)));
+        } catch (JahConectadoException | NaoPossivelConectarException | ArquivoMultiplayerException ex) {
+            ex.printStackTrace();
+            retorno = false;
         }
+        return retorno;
     }
 
     public void buscarPartida() {
@@ -54,12 +45,26 @@ public class AtorRede implements OuvidorProxy {
         }
     }
 
-    public void desconectar() {
+    public boolean desconectar() {
+        boolean retorno = true;
         try {
             proxy.desconectar();
         } catch (NaoConectadoException e) {
             e.printStackTrace();
+            retorno = false;
         }
+        return retorno;
+    }
+
+    public boolean finalizarPartida() {
+        boolean retorno = true;
+        try {
+            proxy.finalizarPartida();
+        } catch (NaoConectadoException | NaoJogandoException e) {
+            e.printStackTrace();
+            retorno = false;
+        }
+        return retorno;
     }
 
     @Override

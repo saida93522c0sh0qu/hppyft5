@@ -7,7 +7,7 @@ import sample.Main;
 public class AtorRede implements OuvidorProxy {
 
     protected br.ufsc.inf.leobr.cliente.Proxy proxy;
-    protected final String servidor = "localhost";
+    protected final String servidor = "netgames.labsoft.ufsc.br";
 
     public AtorRede() {
         proxy = Proxy.getInstance();

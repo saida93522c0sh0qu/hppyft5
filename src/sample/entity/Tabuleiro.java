@@ -69,12 +69,10 @@ public class Tabuleiro {
 
     public void setIdCartaPosicoesJogador(Integer[] idCartas) {
         setIdCartas(idCartas, cartaPosicoesJogador);
-        Main.getInstance().atualizaMesaJogador();
     }
 
     public void setIdCartaPosicoesAdversario(Integer[] idCartas) {
         setIdCartas(idCartas, cartaPosicoesAdversario);
-        Main.getInstance().atualizaMesaAdversario();
     }
 
     private void setIdCartas(Integer[] idCartas, CartaLacaio[] cartas) {
@@ -93,7 +91,8 @@ public class Tabuleiro {
             CartaLacaio cartaAtual = cartaPosicoesJogador[i];
             if (cartaAtual == null) {
                 cartaPosicoesJogador[i] = cartalacaio;
-                Main.getInstance().atualizaTelaJogo();
+                Main.getInstance().atualizaMesaJogador();
+                Main.getInstance().atualizaMaoJogador();
                 return true;
             }
         }
@@ -104,7 +103,6 @@ public class Tabuleiro {
         for (int i = 0; i < cartaPosicoesAdversario.length; i++) {
             cartaPosicoesAdversario[i] = null;
         }
-        Main.getInstance().atualizaMesaAdversario();
     }
 
     public void promoverAtaques() {
@@ -121,8 +119,6 @@ public class Tabuleiro {
                     if (cartaAdversario.getVida() <= 0) {
                         cartaPosicoesAdversario[i] = null;
                     }
-                    Main.getInstance().atualizaMesaJogador();
-                    Main.getInstance().atualizaMesaAdversario();
                 } else {
                     Efeito.aplicarEfeito(Efeito.DANO_HEROI_INIMIGO, cartaJogador.getAtaque());
 
@@ -151,12 +147,10 @@ public class Tabuleiro {
 
     public void setVidaLacaiosJogador(Integer[] vidaLacaiosJogador) {
         setVidaCartas(vidaLacaiosJogador, cartaPosicoesJogador);
-        Main.getInstance().atualizaMesaJogador();
     }
 
     public void setVidaLacaiosAdversario(Integer[] vidaLacaiosAdversario) {
         setVidaCartas(vidaLacaiosAdversario, cartaPosicoesAdversario);
-        Main.getInstance().atualizaMesaAdversario();
     }
 
     private void setVidaCartas(Integer[] vidas, CartaLacaio[] cartas) {

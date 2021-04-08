@@ -17,9 +17,6 @@ public abstract class Carta {
         this.caminhoImagem = CARTA_IMG_PATH + caminhoImagem;
     }
 
-    public Carta() {
-    }
-
     public static <T extends Carta> T getCartaById(int idCarta) {
         return CartaBD.getCartaById(idCarta);
     }
@@ -28,24 +25,14 @@ public abstract class Carta {
         return this.custoMana;
     }
 
-    public void setCustoMana(int custoMana) {
-        this.custoMana = custoMana;
-    }
-
     public String getCaminhoImagem() {
+        System.out.println(caminhoImagem);
         return caminhoImagem;
-    }
-
-    public void setCaminhoImagem(String caminhoImagem) {
-        this.caminhoImagem = CARTA_IMG_PATH + caminhoImagem;
     }
 
     public int getId() {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
 
 }

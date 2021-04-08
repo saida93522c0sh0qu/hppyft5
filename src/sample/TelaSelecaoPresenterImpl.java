@@ -23,7 +23,6 @@ public class TelaSelecaoPresenterImpl {
     protected boolean mHeroiConfirmado = false;
 
     public void onProcurarPartidaClicked(MouseEvent mouseEvent) throws Exception {
-        Main.getInstance().goToTelaJogo();
         Main.getInstance().procurarPartida();
     }
 

@@ -2,6 +2,7 @@ package sample;
 
 import br.ufsc.inf.leobr.cliente.*;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Parent;
@@ -12,6 +13,10 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import sample.entity.*;
 import sample.netgames.AtorRede;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class Main extends Application {
 
@@ -68,6 +73,7 @@ public class Main extends Application {
     protected int posicaoMaoCartaMostrada;
     protected Carta cartaMostrada;
     protected Integer mIdHeroijogador;
+    private boolean jahSetou = false;
 
     public Main() {
         instance = this;
@@ -75,9 +81,6 @@ public class Main extends Application {
     }
 
     public static Main getInstance() {
-        if (null == instance) {
-            instance = new Main();
-        }
         return instance;
     }
 
@@ -157,34 +160,59 @@ public class Main extends Application {
     }
 
     public void procurarPartida() {
+        procurou = true;
         atorRede.buscarPartida();
+        try {
+            goToTelaJogo();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void receberSolicitacaoInicio() {
-        tabuleiro = new Tabuleiro();
-        Jogador jogador = new Jogador();
-        jogador.setIdHeroi(mIdHeroijogador);
-        tabuleiro.setJogador(jogador);
-        if (procurou) {
+        if (!procurou) {
+            tabuleiro = new Tabuleiro();
+            Jogador jogador = new Jogador();
+            jogador.setIdHeroi(mIdHeroijogador);
+            tabuleiro.setJogador(jogador);
             InformacoesIniciais informacoesIniciais = new InformacoesIniciais();
             informacoesIniciais.setIdHeroi(mIdHeroijogador);
             atorRede.enviaJogada(informacoesIniciais);
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        goToTelaJogo();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
         }
     }
 
     public void receberJogada(br.ufsc.inf.leobr.cliente.Jogada jogada) throws Exception {
         if (jogada instanceof InformacoesIniciais) {
+            if (procurou) {
+                tabuleiro = new Tabuleiro();
+                Jogador jogador = new Jogador();
+                jogador.setIdHeroi(mIdHeroijogador);
+                tabuleiro.setJogador(jogador);
+            }
             Jogador jogador2 = new Jogador();
             jogador2.setIdHeroi(((InformacoesIniciais) jogada).getIdHeroi());
             tabuleiro.setAdversario(jogador2);
-            if (!procurou) {
+            if (procurou) {
                 InformacoesIniciais informacoesIniciais = new InformacoesIniciais();
                 informacoesIniciais.setIdHeroi(tabuleiro.getJogador().getIdHeroi());
                 atorRede.enviaJogada(informacoesIniciais);
+                prepararMaosPrimeiroTurno();
             }
-
-            prepararMaosPrimeiroTurno();
         } else {
+            if (!jahSetou && !procurou) {
+                prepararMaosPrimeiroTurno();
+                jahSetou = true;
+            }
             InformacoesJogada informacoesJogada = (InformacoesJogada) jogada;
             tabuleiro.setIdCartaPosicoesJogador(JogadaUtils.IntToInteger(informacoesJogada.getIdCartasNoCampoAdversario()));
             tabuleiro.setIdCartaPosicoesAdversario(JogadaUtils.IntToInteger(informacoesJogada.getIdCartasNoCampoJogador()));
@@ -215,8 +243,8 @@ public class Main extends Application {
     }
 
     public void prepararMaosPrimeiroTurno() throws Exception {
-        goToTelaJogo();
         atualiarTelaJogoPrimeiraVez();
+
         for (int i = 0; i < 3; i++) {
             tabuleiro.getJogador().comprarCarta();
         }
@@ -229,17 +257,27 @@ public class Main extends Application {
     }
 
     private void atualiarTelaJogoPrimeiraVez() {
-        Scene scene = stage.getScene();
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                Scene scene = stage.getScene();
 
-        ImageView heroiJogador = (ImageView) scene.lookup(ID_HEROI_JOGADOR);
-        ImageView heroiAdversario = (ImageView) scene.lookup(ID_HEROI_ADVERSARIO);
-        ImageView phJogador = (ImageView) scene.lookup(ID_PH_JOGADOR);
-        ImageView phAdversario = (ImageView) scene.lookup(ID_PH_ADVERSARIO);
+                ImageView heroiJogador = (ImageView) scene.lookup(ID_HEROI_JOGADOR);
+                ImageView heroiAdversario = (ImageView) scene.lookup(ID_HEROI_ADVERSARIO);
+                ImageView phJogador = (ImageView) scene.lookup(ID_PH_JOGADOR);
+                ImageView phAdversario = (ImageView) scene.lookup(ID_PH_ADVERSARIO);
 
-        heroiJogador.setImage(new Image(getTabuleiro().getJogador().getHeroi().getCaminhoImg()));
-        heroiAdversario.setImage(new Image(getTabuleiro().getAdversario().getHeroi().getCaminhoImg()));
-        phJogador.setImage(new Image(getTabuleiro().getJogador().getHeroi().getPoderHeroico().getCaminhoImg()));
-        phAdversario.setImage(new Image(getTabuleiro().getAdversario().getHeroi().getPoderHeroico().getCaminhoImg()));
+                try {
+                    heroiJogador.setImage(new Image(new FileInputStream(new File(getTabuleiro().getJogador().getHeroi().getCaminhoImg()))));
+                    heroiAdversario.setImage(new Image(new FileInputStream(new File(getTabuleiro().getAdversario().getHeroi().getCaminhoImg()))));
+                    phJogador.setImage(new Image(new FileInputStream(new File(getTabuleiro().getJogador().getHeroi().getPoderHeroico().getCaminhoImg()))));
+                    phAdversario.setImage(new Image(new FileInputStream(new File(getTabuleiro().getAdversario().getHeroi().getPoderHeroico().getCaminhoImg()))));
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
 
         atualizaTelaJogo();
     }
@@ -253,7 +291,7 @@ public class Main extends Application {
             jogador1.setManaMaxima(++manaMax);
         }
         jogador1.setManaAtual(manaMax);
-        atualizaManaJogador();
+        atualizaTelaJogo();
         habilitarBotoes();
     }
 
@@ -273,7 +311,12 @@ public class Main extends Application {
         posicaoMaoCartaMostrada = idPosicaoMao;
         cartaMostrada = tabuleiro.getJogador().getMao()[posicaoMaoCartaMostrada];
         ImageView imageView = (ImageView) stage.getScene().lookup(ID_CARTA_SELECIONADA);
-        Image img = new Image(cartaMostrada.getCaminhoImagem());
+        Image img = null;
+        try {
+            img = new Image(new FileInputStream(new File(cartaMostrada.getCaminhoImagem())));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
         imageView.setImage(img);
         showBotoesCarta();
     }
@@ -293,6 +336,8 @@ public class Main extends Application {
 
     public void promoverAtaques() throws Exception {
         getTabuleiro().promoverAtaques();
+        atualizaMesaAdversario();
+        atualizaMesaJogador();
         verificaFimJogo();
     }
 
@@ -303,12 +348,26 @@ public class Main extends Application {
         }
     }
 
-    public void showResultadoJogo() throws Exception {
-        if (ganhou) {
-            replaceSceneContent("ganhou.fxml");
-        } else {
-            replaceSceneContent("perdeu.fxml");
-        }
+    public void showResultadoJogo() {
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                if (ganhou) {
+                    try {
+                        replaceSceneContent("ganhou.fxml");
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        replaceSceneContent("perdeu.fxml");
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+
     }
 
     public void recebeIdHeroi(Integer mIdHeroiSelecionado) {
@@ -324,86 +383,127 @@ public class Main extends Application {
     }
 
     public void atualizaMesaJogador() {
-        Scene scene = stage.getScene();
-        ImageView cartaMesaJogador1 = (ImageView) scene.lookup(ID_CARTA_MESA_JOGADOR_1);
-        ImageView cartaMesaJogador2 = (ImageView) scene.lookup(ID_CARTA_MESA_JOGADOR_2);
-        ImageView cartaMesaJogador3 = (ImageView) scene.lookup(ID_CARTA_MESA_JOGADOR_3);
-        ImageView cartaMesaJogador4 = (ImageView) scene.lookup(ID_CARTA_MESA_JOGADOR_4);
-        ImageView cartaMesaJogador5 = (ImageView) scene.lookup(ID_CARTA_MESA_JOGADOR_5);
-        cartaMesaJogador1.setImage(tabuleiro.getCartaPosicoesJogador()[1] == null ? null : new Image(tabuleiro.getCartaPosicoesJogador()[1].getCaminhoImagem()));
-        cartaMesaJogador2.setImage(tabuleiro.getCartaPosicoesJogador()[2] == null ? null : new Image(tabuleiro.getCartaPosicoesJogador()[2].getCaminhoImagem()));
-        cartaMesaJogador3.setImage(tabuleiro.getCartaPosicoesJogador()[3] == null ? null : new Image(tabuleiro.getCartaPosicoesJogador()[3].getCaminhoImagem()));
-        cartaMesaJogador4.setImage(tabuleiro.getCartaPosicoesJogador()[4] == null ? null : new Image(tabuleiro.getCartaPosicoesJogador()[4].getCaminhoImagem()));
-        cartaMesaJogador5.setImage(tabuleiro.getCartaPosicoesJogador()[5] == null ? null : new Image(tabuleiro.getCartaPosicoesJogador()[5].getCaminhoImagem()));
-        Label vidaCartaJogador1 = (Label) scene.lookup(ID_VIDA_CARTA_JOGADOR_1);
-        Label vidaCartaJogador2 = (Label) scene.lookup(ID_VIDA_CARTA_JOGADOR_2);
-        Label vidaCartaJogador3 = (Label) scene.lookup(ID_VIDA_CARTA_JOGADOR_3);
-        Label vidaCartaJogador4 = (Label) scene.lookup(ID_VIDA_CARTA_JOGADOR_4);
-        Label vidaCartaJogador5 = (Label) scene.lookup(ID_VIDA_CARTA_JOGADOR_5);
-        vidaCartaJogador1.setText(tabuleiro.getCartaPosicoesJogador()[1] != null ? (Integer.toString(tabuleiro.getCartaPosicoesJogador()[1].getVida())) : "");
-        vidaCartaJogador2.setText(tabuleiro.getCartaPosicoesJogador()[2] != null ? (Integer.toString(tabuleiro.getCartaPosicoesJogador()[2].getVida())) : "");
-        vidaCartaJogador3.setText(tabuleiro.getCartaPosicoesJogador()[3] != null ? (Integer.toString(tabuleiro.getCartaPosicoesJogador()[3].getVida())) : "");
-        vidaCartaJogador4.setText(tabuleiro.getCartaPosicoesJogador()[4] != null ? (Integer.toString(tabuleiro.getCartaPosicoesJogador()[4].getVida())) : "");
-        vidaCartaJogador5.setText(tabuleiro.getCartaPosicoesJogador()[5] != null ? (Integer.toString(tabuleiro.getCartaPosicoesJogador()[5].getVida())) : "");
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                Scene scene = stage.getScene();
+                ImageView cartaMesaJogador1 = (ImageView) scene.lookup(ID_CARTA_MESA_JOGADOR_1);
+                ImageView cartaMesaJogador2 = (ImageView) scene.lookup(ID_CARTA_MESA_JOGADOR_2);
+                ImageView cartaMesaJogador3 = (ImageView) scene.lookup(ID_CARTA_MESA_JOGADOR_3);
+                ImageView cartaMesaJogador4 = (ImageView) scene.lookup(ID_CARTA_MESA_JOGADOR_4);
+                ImageView cartaMesaJogador5 = (ImageView) scene.lookup(ID_CARTA_MESA_JOGADOR_5);
+                try {
+                    cartaMesaJogador1.setImage(tabuleiro.getCartaPosicoesJogador()[0] == null ? null : new Image(new FileInputStream(new File(tabuleiro.getCartaPosicoesJogador()[0].getCaminhoImagem()))));
+                    cartaMesaJogador2.setImage(tabuleiro.getCartaPosicoesJogador()[1] == null ? null : new Image(new FileInputStream(new File(tabuleiro.getCartaPosicoesJogador()[1].getCaminhoImagem()))));
+                    cartaMesaJogador3.setImage(tabuleiro.getCartaPosicoesJogador()[2] == null ? null : new Image(new FileInputStream(new File(tabuleiro.getCartaPosicoesJogador()[2].getCaminhoImagem()))));
+                    cartaMesaJogador4.setImage(tabuleiro.getCartaPosicoesJogador()[3] == null ? null : new Image(new FileInputStream(new File(tabuleiro.getCartaPosicoesJogador()[3].getCaminhoImagem()))));
+                    cartaMesaJogador5.setImage(tabuleiro.getCartaPosicoesJogador()[4] == null ? null : new Image(new FileInputStream(new File(tabuleiro.getCartaPosicoesJogador()[4].getCaminhoImagem()))));
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                Label vidaCartaJogador1 = (Label) scene.lookup(ID_VIDA_CARTA_JOGADOR_1);
+                Label vidaCartaJogador2 = (Label) scene.lookup(ID_VIDA_CARTA_JOGADOR_2);
+                Label vidaCartaJogador3 = (Label) scene.lookup(ID_VIDA_CARTA_JOGADOR_3);
+                Label vidaCartaJogador4 = (Label) scene.lookup(ID_VIDA_CARTA_JOGADOR_4);
+                Label vidaCartaJogador5 = (Label) scene.lookup(ID_VIDA_CARTA_JOGADOR_5);
+                vidaCartaJogador1.setText(tabuleiro.getCartaPosicoesJogador()[0] != null ? (Integer.toString(tabuleiro.getCartaPosicoesJogador()[0].getVida())) : "");
+                vidaCartaJogador2.setText(tabuleiro.getCartaPosicoesJogador()[1] != null ? (Integer.toString(tabuleiro.getCartaPosicoesJogador()[1].getVida())) : "");
+                vidaCartaJogador3.setText(tabuleiro.getCartaPosicoesJogador()[2] != null ? (Integer.toString(tabuleiro.getCartaPosicoesJogador()[2].getVida())) : "");
+                vidaCartaJogador4.setText(tabuleiro.getCartaPosicoesJogador()[3] != null ? (Integer.toString(tabuleiro.getCartaPosicoesJogador()[3].getVida())) : "");
+                vidaCartaJogador5.setText(tabuleiro.getCartaPosicoesJogador()[4] != null ? (Integer.toString(tabuleiro.getCartaPosicoesJogador()[4].getVida())) : "");
+            }
+        });
     }
 
     public void atualizaMesaAdversario() {
-        Scene scene = stage.getScene();
-        ImageView cartaMesaAdversario1 = (ImageView) scene.lookup(ID_CARTA_MESA_ADVERSARIO_1);
-        ImageView cartaMesaAdversario2 = (ImageView) scene.lookup(ID_CARTA_MESA_ADVERSARIO_2);
-        ImageView cartaMesaAdversario3 = (ImageView) scene.lookup(ID_CARTA_MESA_ADVERSARIO_3);
-        ImageView cartaMesaAdversario4 = (ImageView) scene.lookup(ID_CARTA_MESA_ADVERSARIO_4);
-        ImageView cartaMesaAdversario5 = (ImageView) scene.lookup(ID_CARTA_MESA_ADVERSARIO_5);
-        cartaMesaAdversario1.setImage(tabuleiro.getCartaPosicoesAdversario()[1] == null ? null : new Image(tabuleiro.getCartaPosicoesAdversario()[1].getCaminhoImagem()));
-        cartaMesaAdversario2.setImage(tabuleiro.getCartaPosicoesAdversario()[2] == null ? null : new Image(tabuleiro.getCartaPosicoesAdversario()[2].getCaminhoImagem()));
-        cartaMesaAdversario3.setImage(tabuleiro.getCartaPosicoesAdversario()[3] == null ? null : new Image(tabuleiro.getCartaPosicoesAdversario()[3].getCaminhoImagem()));
-        cartaMesaAdversario4.setImage(tabuleiro.getCartaPosicoesAdversario()[4] == null ? null : new Image(tabuleiro.getCartaPosicoesAdversario()[4].getCaminhoImagem()));
-        cartaMesaAdversario5.setImage(tabuleiro.getCartaPosicoesAdversario()[5] == null ? null : new Image(tabuleiro.getCartaPosicoesAdversario()[5].getCaminhoImagem()));
-        Label vidaCartaAdversario1 = (Label) scene.lookup(ID_VIDA_CARTA_ADVERSARIO_1);
-        Label vidaCartaAdversario2 = (Label) scene.lookup(ID_VIDA_CARTA_ADVERSARIO_2);
-        Label vidaCartaAdversario3 = (Label) scene.lookup(ID_VIDA_CARTA_ADVERSARIO_3);
-        Label vidaCartaAdversario4 = (Label) scene.lookup(ID_VIDA_CARTA_ADVERSARIO_4);
-        Label vidaCartaAdversario5 = (Label) scene.lookup(ID_VIDA_CARTA_ADVERSARIO_5);
-        vidaCartaAdversario1.setText(tabuleiro.getCartaPosicoesAdversario()[1] != null ? (Integer.toString(tabuleiro.getCartaPosicoesAdversario()[1].getVida())) : "");
-        vidaCartaAdversario2.setText(tabuleiro.getCartaPosicoesAdversario()[2] != null ? (Integer.toString(tabuleiro.getCartaPosicoesAdversario()[2].getVida())) : "");
-        vidaCartaAdversario3.setText(tabuleiro.getCartaPosicoesAdversario()[3] != null ? (Integer.toString(tabuleiro.getCartaPosicoesAdversario()[3].getVida())) : "");
-        vidaCartaAdversario4.setText(tabuleiro.getCartaPosicoesAdversario()[4] != null ? (Integer.toString(tabuleiro.getCartaPosicoesAdversario()[4].getVida())) : "");
-        vidaCartaAdversario5.setText(tabuleiro.getCartaPosicoesAdversario()[5] != null ? (Integer.toString(tabuleiro.getCartaPosicoesAdversario()[5].getVida())) : "");
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                Scene scene = stage.getScene();
+                ImageView cartaMesaAdversario1 = (ImageView) scene.lookup(ID_CARTA_MESA_ADVERSARIO_1);
+                ImageView cartaMesaAdversario2 = (ImageView) scene.lookup(ID_CARTA_MESA_ADVERSARIO_2);
+                ImageView cartaMesaAdversario3 = (ImageView) scene.lookup(ID_CARTA_MESA_ADVERSARIO_3);
+                ImageView cartaMesaAdversario4 = (ImageView) scene.lookup(ID_CARTA_MESA_ADVERSARIO_4);
+                ImageView cartaMesaAdversario5 = (ImageView) scene.lookup(ID_CARTA_MESA_ADVERSARIO_5);
+                try {
+                    cartaMesaAdversario1.setImage(tabuleiro.getCartaPosicoesAdversario()[0] == null ? null : new Image(new FileInputStream(new File(tabuleiro.getCartaPosicoesAdversario()[0].getCaminhoImagem()))));
+                    cartaMesaAdversario2.setImage(tabuleiro.getCartaPosicoesAdversario()[1] == null ? null : new Image(new FileInputStream(new File(tabuleiro.getCartaPosicoesAdversario()[1].getCaminhoImagem()))));
+                    cartaMesaAdversario3.setImage(tabuleiro.getCartaPosicoesAdversario()[2] == null ? null : new Image(new FileInputStream(new File(tabuleiro.getCartaPosicoesAdversario()[2].getCaminhoImagem()))));
+                    cartaMesaAdversario4.setImage(tabuleiro.getCartaPosicoesAdversario()[3] == null ? null : new Image(new FileInputStream(new File(tabuleiro.getCartaPosicoesAdversario()[3].getCaminhoImagem()))));
+                    cartaMesaAdversario5.setImage(tabuleiro.getCartaPosicoesAdversario()[4] == null ? null : new Image(new FileInputStream(new File(tabuleiro.getCartaPosicoesAdversario()[4].getCaminhoImagem()))));
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+                Label vidaCartaAdversario1 = (Label) scene.lookup(ID_VIDA_CARTA_ADVERSARIO_1);
+                Label vidaCartaAdversario2 = (Label) scene.lookup(ID_VIDA_CARTA_ADVERSARIO_2);
+                Label vidaCartaAdversario3 = (Label) scene.lookup(ID_VIDA_CARTA_ADVERSARIO_3);
+                Label vidaCartaAdversario4 = (Label) scene.lookup(ID_VIDA_CARTA_ADVERSARIO_4);
+                Label vidaCartaAdversario5 = (Label) scene.lookup(ID_VIDA_CARTA_ADVERSARIO_5);
+                vidaCartaAdversario1.setText(tabuleiro.getCartaPosicoesAdversario()[0] != null ? (Integer.toString(tabuleiro.getCartaPosicoesAdversario()[0].getVida())) : "");
+                vidaCartaAdversario2.setText(tabuleiro.getCartaPosicoesAdversario()[1] != null ? (Integer.toString(tabuleiro.getCartaPosicoesAdversario()[1].getVida())) : "");
+                vidaCartaAdversario3.setText(tabuleiro.getCartaPosicoesAdversario()[2] != null ? (Integer.toString(tabuleiro.getCartaPosicoesAdversario()[2].getVida())) : "");
+                vidaCartaAdversario4.setText(tabuleiro.getCartaPosicoesAdversario()[3] != null ? (Integer.toString(tabuleiro.getCartaPosicoesAdversario()[3].getVida())) : "");
+                vidaCartaAdversario5.setText(tabuleiro.getCartaPosicoesAdversario()[4] != null ? (Integer.toString(tabuleiro.getCartaPosicoesAdversario()[4].getVida())) : "");
+            }
+        });
     }
 
     public void atualizaMaoJogador() {
-        Scene scene = stage.getScene();
-        ImageView carta1 = (ImageView) scene.lookup(ID_CARTA_1);
-        ImageView carta2 = (ImageView) scene.lookup(ID_CARTA_2);
-        ImageView carta3 = (ImageView) scene.lookup(ID_CARTA_3);
-        ImageView carta4 = (ImageView) scene.lookup(ID_CARTA_4);
-        ImageView carta5 = (ImageView) scene.lookup(ID_CARTA_5);
-        ImageView carta6 = (ImageView) scene.lookup(ID_CARTA_6);
-        carta1.setImage(tabuleiro.getJogador().getMao()[1] == null ? null : new Image(tabuleiro.getJogador().getMao()[1].getCaminhoImagem()));
-        carta2.setImage(tabuleiro.getJogador().getMao()[2] == null ? null : new Image(tabuleiro.getJogador().getMao()[2].getCaminhoImagem()));
-        carta3.setImage(tabuleiro.getJogador().getMao()[3] == null ? null : new Image(tabuleiro.getJogador().getMao()[3].getCaminhoImagem()));
-        carta4.setImage(tabuleiro.getJogador().getMao()[4] == null ? null : new Image(tabuleiro.getJogador().getMao()[4].getCaminhoImagem()));
-        carta5.setImage(tabuleiro.getJogador().getMao()[5] == null ? null : new Image(tabuleiro.getJogador().getMao()[5].getCaminhoImagem()));
-        carta6.setImage(tabuleiro.getJogador().getMao()[6] == null ? null : new Image(tabuleiro.getJogador().getMao()[6].getCaminhoImagem()));
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                Scene scene = stage.getScene();
+                ImageView carta1 = (ImageView) scene.lookup(ID_CARTA_1);
+                ImageView carta2 = (ImageView) scene.lookup(ID_CARTA_2);
+                ImageView carta3 = (ImageView) scene.lookup(ID_CARTA_3);
+                ImageView carta4 = (ImageView) scene.lookup(ID_CARTA_4);
+                ImageView carta5 = (ImageView) scene.lookup(ID_CARTA_5);
+                ImageView carta6 = (ImageView) scene.lookup(ID_CARTA_6);
+                try {
+                    carta1.setImage(tabuleiro.getJogador().getMao()[0] == null ? null : new Image(new FileInputStream(new File(tabuleiro.getJogador().getMao()[0].getCaminhoImagem()))));
+                    carta2.setImage(tabuleiro.getJogador().getMao()[1] == null ? null : new Image(new FileInputStream(new File(tabuleiro.getJogador().getMao()[1].getCaminhoImagem()))));
+                    carta3.setImage(tabuleiro.getJogador().getMao()[2] == null ? null : new Image(new FileInputStream(new File(tabuleiro.getJogador().getMao()[2].getCaminhoImagem()))));
+                    carta4.setImage(tabuleiro.getJogador().getMao()[3] == null ? null : new Image(new FileInputStream(new File(tabuleiro.getJogador().getMao()[3].getCaminhoImagem()))));
+                    carta5.setImage(tabuleiro.getJogador().getMao()[4] == null ? null : new Image(new FileInputStream(new File(tabuleiro.getJogador().getMao()[4].getCaminhoImagem()))));
+                    carta6.setImage(tabuleiro.getJogador().getMao()[5] == null ? null : new Image(new FileInputStream(new File(tabuleiro.getJogador().getMao()[5].getCaminhoImagem()))));
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
     }
 
     public void atualizaVidaJogadores() {
-        Scene scene = stage.getScene();
-        Label vidaHeroiJogador = (Label) scene.lookup(ID_VIDA_HEROI_JOGADOR);
-        Label vidaHeroiAdversario = (Label) scene.lookup(ID_VIDA_HEROI_ADVERSARIO);
-        vidaHeroiJogador.setText(Integer.toString(tabuleiro.getJogador().getPontosDeVida()));
-        vidaHeroiAdversario.setText(Integer.toString(tabuleiro.getAdversario().getPontosDeVida()));
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                Scene scene = stage.getScene();
+                Label vidaHeroiJogador = (Label) scene.lookup(ID_VIDA_HEROI_JOGADOR);
+                Label vidaHeroiAdversario = (Label) scene.lookup(ID_VIDA_HEROI_ADVERSARIO);
+                vidaHeroiJogador.setText(Integer.toString(tabuleiro.getJogador().getPontosDeVida()));
+                vidaHeroiAdversario.setText(Integer.toString(tabuleiro.getAdversario().getPontosDeVida()));
+            }
+        });
+
     }
 
     public void atualizaManaJogador() {
-        Scene scene = stage.getScene();
-        Label manaJogador = (Label) scene.lookup(ID_MANA_JOGADOR);
-        manaJogador.setText(Integer.toString(tabuleiro.getJogador().getManaAtual()) + "/" + Integer.toString(tabuleiro.getJogador().getManaMaxima()));
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                Scene scene = stage.getScene();
+                Label manaJogador = (Label) scene.lookup(ID_MANA_JOGADOR);
+                manaJogador.setText(Integer.toString(tabuleiro.getJogador().getManaAtual()) + "/" + Integer.toString(tabuleiro.getJogador().getManaMaxima()));
+            }
+        });
+
     }
 
     public void finalizarTurno() throws Exception {
         desabilitarBotoes();
         promoverAtaques();
+        enviarJogada();
     }
 
     public void desistir() throws Exception {
@@ -421,13 +521,19 @@ public class Main extends Application {
     }
 
     public void usarCartaMostrada() {
-        if (cartaMostrada instanceof CartaLacaio) {
-            if (tabuleiro.adicionaLacaio((CartaLacaio) cartaMostrada)) {
+        int manaCarta = cartaMostrada.getCustoMana();
+        int manaAtual = tabuleiro.getJogador().getManaAtual();
+        if (manaCarta <= manaAtual) {
+            if (cartaMostrada instanceof CartaLacaio) {
+                if (tabuleiro.adicionaLacaio((CartaLacaio) cartaMostrada)) {
+                    tabuleiro.getJogador().removeCarta(posicaoMaoCartaMostrada);
+                    tabuleiro.getJogador().setManaAtual(manaAtual - manaCarta);
+                }
+            } else {
+                Efeito.aplicarEfeito(((CartaFeitico) cartaMostrada).getEfeito());
                 tabuleiro.getJogador().removeCarta(posicaoMaoCartaMostrada);
+                tabuleiro.getJogador().setManaAtual(manaAtual - manaCarta);
             }
-        } else {
-            Efeito.aplicarEfeito(((CartaFeitico) cartaMostrada).getEfeito());
-            tabuleiro.getJogador().removeCarta(posicaoMaoCartaMostrada);
         }
         cancelarCartaMostrada();
     }
@@ -443,5 +549,19 @@ public class Main extends Application {
 
     public boolean conectar() {
         return atorRede.conectar();
+    }
+
+    public void partidaNaoEncontrada() {
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    goToTelaSelecao();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        atorRede.desconectar();
     }
 }

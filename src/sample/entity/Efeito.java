@@ -40,6 +40,7 @@ public class Efeito {
                 for (int i = 0; i < qtdEfeito; i++) {
                     Main.getInstance().getTabuleiro().getJogador().comprarCarta();
                 }
+                Main.getInstance().atualizaMaoJogador();
                 break;
             case DESTROI_INIMIGOS:
                 Main.getInstance().getTabuleiro().destruirLacaiosInimigos();

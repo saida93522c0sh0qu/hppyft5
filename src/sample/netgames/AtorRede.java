@@ -7,15 +7,12 @@ import sample.Main;
 public class AtorRede implements OuvidorProxy {
 
     protected br.ufsc.inf.leobr.cliente.Proxy proxy;
-    protected final String servidor = "netgames.labsoft.ufsc.br";
+    //    protected final String servidor = "netgames.labsoft.ufsc.br";
+    protected final String servidor = "localhost";
 
     public AtorRede() {
         proxy = Proxy.getInstance();
         proxy.addOuvinte(this);
-    }
-
-    public String getServidor() {
-        return this.servidor;
     }
 
     public boolean conectar() {
@@ -34,6 +31,7 @@ public class AtorRede implements OuvidorProxy {
             proxy.iniciarPartida(2);
         } catch (NaoConectadoException e) {
             e.printStackTrace();
+            System.out.println("NAO TAH CONECTADO");
         }
     }
 
@@ -98,6 +96,6 @@ public class AtorRede implements OuvidorProxy {
 
     @Override
     public void tratarPartidaNaoIniciada(String message) {
-        Main.getInstance().finalizarComErro();
+        Main.getInstance().partidaNaoEncontrada();
     }
 }

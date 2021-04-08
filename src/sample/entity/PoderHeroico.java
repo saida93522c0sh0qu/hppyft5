@@ -6,11 +6,12 @@ public class PoderHeroico {
     protected Efeito efeito;
 
     public PoderHeroico(String caminhoImg, Efeito efeito) {
-        this.caminhoImg = caminhoImg;
+        this.caminhoImg = Carta.CARTA_IMG_PATH + caminhoImg;
         this.efeito = efeito;
     }
 
     public String getCaminhoImg() {
+        System.out.println(caminhoImg);
         return caminhoImg;
     }
 

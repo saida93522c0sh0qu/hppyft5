@@ -16,7 +16,7 @@ public class TelaJogoPresenterImpl {
         }
     }
 
-    public void onCartaMesa1Clicked(MouseEvent mouseEvent)  {
+    public void onCartaMesa1Clicked(MouseEvent mouseEvent) {
         //TODO TIRAR ISSO AKI DEPOIS
         ImageView imgView = (ImageView) Main.getInstance().stage.getScene().lookup("#carta_mesa_jogador_1");
 //        Image image1 = new Image("/src/sample/carta_teste2.png", 83.0, 118.0, false, false);
@@ -35,37 +35,37 @@ public class TelaJogoPresenterImpl {
 
     public void onCarta0Clicked(MouseEvent mouseEvent) {
         if (Main.getInstance().botoesGeraisDisponiveis) {
-            Main.getInstance().abrirCarta(1);
+            Main.getInstance().abrirCarta(0);
         }
     }
 
     public void onCarta1Clicked(MouseEvent mouseEvent) {
         if (Main.getInstance().botoesGeraisDisponiveis) {
-            Main.getInstance().abrirCarta(2);
+            Main.getInstance().abrirCarta(1);
         }
     }
 
     public void onCarta2Clicked(MouseEvent mouseEvent) {
         if (Main.getInstance().botoesGeraisDisponiveis) {
-            Main.getInstance().abrirCarta(3);
+            Main.getInstance().abrirCarta(2);
         }
     }
 
     public void onCarta3Clicked(MouseEvent mouseEvent) {
         if (Main.getInstance().botoesGeraisDisponiveis) {
-            Main.getInstance().abrirCarta(4);
+            Main.getInstance().abrirCarta(3);
         }
     }
 
     public void onCarta4Clicked(MouseEvent mouseEvent) {
         if (Main.getInstance().botoesGeraisDisponiveis) {
-            Main.getInstance().abrirCarta(5);
+            Main.getInstance().abrirCarta(4);
         }
     }
 
     public void onCarta5Clicked(MouseEvent mouseEvent) {
         if (Main.getInstance().botoesGeraisDisponiveis) {
-            Main.getInstance().abrirCarta(6);
+            Main.getInstance().abrirCarta(5);
         }
     }
 

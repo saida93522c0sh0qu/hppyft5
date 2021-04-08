@@ -1,20 +1,20 @@
 package sample.entity;
 
-public class InformacoesJogada implements Jogada {
+public class InformacoesJogada implements br.ufsc.inf.leobr.cliente.Jogada {
 
     protected int vidaJogador;
     protected int vidaAdversario;
-    protected Integer[] idCartasNoCampoJogador;
-    protected Integer[] idCartasNoCampoAdversario;
-    protected Integer[] vidaLacaiosJogador;
-    protected Integer[] vidaLacaiosAdversario;
+    protected int[] idCartasNoCampoJogador;
+    protected int[] idCartasNoCampoAdversario;
+    protected int[] vidaLacaiosJogador;
+    protected int[] vidaLacaiosAdversario;
     protected boolean jogoAcabou;
 
-    public Integer[] getIdCartasNoCampoJogador() {
+    public int[] getIdCartasNoCampoJogador() {
         return this.idCartasNoCampoJogador;
     }
 
-    public void setIdCartasNoCampoJogador(Integer[] idCartasNoCampoJogador) {
+    public void setIdCartasNoCampoJogador(int[] idCartasNoCampoJogador) {
         this.idCartasNoCampoJogador = idCartasNoCampoJogador;
     }
 
@@ -34,27 +34,27 @@ public class InformacoesJogada implements Jogada {
         this.vidaAdversario = vidaAdversario;
     }
 
-    public Integer[] getIdCartasNoCampoAdversario() {
+    public int[] getIdCartasNoCampoAdversario() {
         return this.idCartasNoCampoAdversario;
     }
 
-    public void setIdCartasNoCampoAdversario(Integer[] idCartasNoCampoAdversario) {
+    public void setIdCartasNoCampoAdversario(int[] idCartasNoCampoAdversario) {
         this.idCartasNoCampoAdversario = idCartasNoCampoAdversario;
     }
 
-    public Integer[] getVidaLacaiosJogador() {
+    public int[] getVidaLacaiosJogador() {
         return vidaLacaiosJogador;
     }
 
-    public void setVidaLacaiosJogador(Integer[] vidaLacaiosJogador) {
+    public void setVidaLacaiosJogador(int[] vidaLacaiosJogador) {
         this.vidaLacaiosJogador = vidaLacaiosJogador;
     }
 
-    public Integer[] getVidaLacaiosAdversario() {
+    public int[] getVidaLacaiosAdversario() {
         return vidaLacaiosAdversario;
     }
 
-    public void setVidaLacaiosAdversario(Integer[] vidaLacaiosAdversario) {
+    public void setVidaLacaiosAdversario(int[] vidaLacaiosAdversario) {
         this.vidaLacaiosAdversario = vidaLacaiosAdversario;
     }
 

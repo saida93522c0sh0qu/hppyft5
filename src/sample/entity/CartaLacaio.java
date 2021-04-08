@@ -11,15 +11,8 @@ public class CartaLacaio extends Carta {
         this.vida = vida;
     }
 
-    public CartaLacaio() {
-    }
-
     public int getAtaque() {
         return this.ataque;
-    }
-
-    public void setAtaque(int ataque) {
-        this.ataque = ataque;
     }
 
     public int getVida() {

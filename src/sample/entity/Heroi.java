@@ -28,6 +28,7 @@ public class Heroi {
     }
 
     public String getCaminhoImg() {
+        System.out.println(caminhoImg);
         return caminhoImg;
     }
 

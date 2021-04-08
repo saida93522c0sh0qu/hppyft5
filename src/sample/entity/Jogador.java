@@ -42,7 +42,6 @@ public class Jogador {
             for (int i = 0; i < mao.length; i++) {
                 if (mao[i] == null) {
                     mao[i] = Carta.getCartaById(idCarta);
-                    Main.getInstance().atualizaMaoJogador();
                     return;
                 }
             }
@@ -55,7 +54,7 @@ public class Jogador {
         for (int i = 0; i < mao.length; i++) {
             if (mao[i] == null) {
                 mao[i] = Carta.getCartaById(1);
-                Main.getInstance().atualizaMaoJogador();
+                return;
             }
         }
     }

@@ -2,7 +2,7 @@ package sample;
 
 public class JogadaUtils {
 
-    public static int[] IntegerToInt(Integer[] IntegerArray) {
+    public static int[] IntegerArrayToInt(Integer[] IntegerArray) {
         int[] intArray = new int[IntegerArray.length];
         for (int i = 0; i < intArray.length; i++) {
             Integer integerNumber = IntegerArray[i];
@@ -15,7 +15,7 @@ public class JogadaUtils {
         return intArray;
     }
 
-    public static Integer[] IntToInteger(int[] intArray) {
+    public static Integer[] IntArrayToInteger(int[] intArray) {
         Integer[] integerArray = new Integer[intArray.length];
         for (int i = 0; i < integerArray.length; i++) {
             int intNumber = intArray[i];
@@ -26,5 +26,21 @@ public class JogadaUtils {
             }
         }
         return integerArray;
+    }
+
+    public static int IntegerToInt(Integer integerNumber) {
+        if (integerNumber != null) {
+            return integerNumber;
+        } else {
+            return -99;
+        }
+    }
+
+    public static Integer IntToInteger(int intNumber) {
+        if (intNumber != -99) {
+            return intNumber;
+        } else {
+            return null;
+        }
     }
 }

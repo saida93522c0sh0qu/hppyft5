@@ -18,7 +18,7 @@ public class HeroiBD {
                     list1.add(i);
                 }
                 Baralho bar1 = new Baralho(list1);
-                return new Heroi(ph1, bar1, "bruxo_jogo.png");
+                return new Heroi(idHeroi, ph1, bar1, "bruxo_jogo.png");
             case 2:
                 PoderHeroico ph2 = new PoderHeroico("ph_cacador.png", new Efeito(Efeito.DANO_HEROI_INIMIGO, 2));
                 List<Integer> list2 = new ArrayList<>();
@@ -26,7 +26,7 @@ public class HeroiBD {
                     list2.add(i);
                 }
                 Baralho bar2 = new Baralho(list2);
-                return new Heroi(ph2, bar2, "cacador_jogo.png");
+                return new Heroi(idHeroi, ph2, bar2, "cacador_jogo.png");
             default:
                 return null;
         }

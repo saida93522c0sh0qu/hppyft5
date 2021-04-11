@@ -19,10 +19,6 @@ import java.io.FileNotFoundException;
 
 public class Main extends Application {
 
-    //TODO Verificar pq jogo tah infinito
-    //TODO Verificar pq mana n da mana
-    //TODO Verificar pq qd acaba o jogo resultado sai errado
-
     private static final String APP_TITLE = "HEARTHSTONE";
     private static final String ID_BOTAO_CONFIRMAR = "#confirmar_button";
     private static final String ID_BOTAO_CANCELAR = "#cancelar_button";
@@ -72,10 +68,12 @@ public class Main extends Application {
     protected boolean acabou = false;
     protected boolean botoesCartaDisponiveis = false;
     protected boolean botoesGeraisDisponiveis = false;
+    protected boolean callbackFeito = false;
 
     protected int posicaoMaoCartaMostrada;
     protected Carta cartaMostrada;
     protected Integer mIdHeroijogador;
+    private boolean desconectado = true;
 
     public Main() {
         instance = this;
@@ -221,45 +219,57 @@ public class Main extends Application {
             tabuleiro.getAdversario().setPontosDeVida(informacoesJogada.getVidaJogador());
             tabuleiro.setVidaLacaiosJogador(JogadaUtils.IntArrayToInteger(informacoesJogada.getVidaLacaiosAdversario()));
             tabuleiro.setVidaLacaiosAdversario(JogadaUtils.IntArrayToInteger(informacoesJogada.getVidaLacaiosJogador()));
-            endGameIfNeeded();
+            acabou = informacoesJogada.isJogoAcabou();
             if (!acabou) {
                 prepararInicioTurno();
+            } else {
+                showResultadoJogo();
+                finalizaJogo();
             }
         }
     }
 
-    private void endGameIfNeeded() throws Exception {
-        if (acabou) {
-            if (tabuleiro.getJogador().getPontosDeVida() <= 0) {
-                ganhou = false;
-                Platform.runLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            replaceSceneContent("perdeu.fxml");
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
-            } else {
-                ganhou = true;
-                Platform.runLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        try {
-                            replaceSceneContent("ganhou.fxml");
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
-            }
+    private void finalizaJogo() {
+        atorRede.finalizarPartida();
+        atorRede.desconectar();
+        desconectado = true;
+    }
 
-            if (procurou) {
-                atorRede.finalizarPartida();
+    private void showResultadoJogo() {
+        if (tabuleiro.getJogador().getPontosDeVida() <= 0) {
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        replaceSceneContent("perdeu.fxml");
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        } else {
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        replaceSceneContent("ganhou.fxml");
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        }
+    }
+
+    public void verificaFimJogo() {
+        if (tabuleiro.getJogador().getPontosDeVida() <= 0 || tabuleiro.getAdversario().getPontosDeVida() <= 0) {
+            acabou = true;
+            showResultadoJogo();
+            try {
+                enviarJogada();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-            atorRede.desconectar();
         }
     }
 
@@ -354,14 +364,13 @@ public class Main extends Application {
         informacoesJogada.setVidaLacaiosAdversario(JogadaUtils.IntegerArrayToInt(tabuleiro.getVidaLacaiosAdversario()));
 
         atorRede.enviaJogada(informacoesJogada);
-
-        endGameIfNeeded();
     }
 
     public void promoverAtaques() throws Exception {
         getTabuleiro().promoverAtaques();
         atualizaMesaAdversario();
         atualizaMesaJogador();
+        verificaFimJogo();
     }
 
     public void recebeIdHeroi(Integer mIdHeroiSelecionado) {
@@ -497,7 +506,9 @@ public class Main extends Application {
     public void finalizarTurno() throws Exception {
         desabilitarBotoes();
         promoverAtaques();
-        enviarJogada();
+        if (!acabou) {
+            enviarJogada();
+        }
     }
 
     public void cancelarCartaMostrada() {
@@ -509,37 +520,50 @@ public class Main extends Application {
     }
 
     public void usarCartaMostrada() {
-        int manaCarta = cartaMostrada.getCustoMana();
+        int custoMana = cartaMostrada.getCustoMana();
         int manaAtual = tabuleiro.getJogador().getManaAtual();
-        if (manaCarta <= manaAtual) {
+        if (custoMana <= manaAtual) {
             if (cartaMostrada instanceof CartaLacaio) {
                 if (tabuleiro.adicionaLacaio((CartaLacaio) cartaMostrada)) {
                     tabuleiro.getJogador().removeCarta(posicaoMaoCartaMostrada);
-                    tabuleiro.getJogador().setManaAtual(manaAtual - manaCarta);
+                    int manaNova = manaAtual - custoMana;
+                    tabuleiro.getJogador().setManaAtual(manaNova);
                 }
             } else {
                 Efeito.aplicarEfeito(((CartaFeitico) cartaMostrada).getEfeito());
                 tabuleiro.getJogador().removeCarta(posicaoMaoCartaMostrada);
+                if (custoMana > 0) {
+                    int manaNova = manaAtual - custoMana;
+                    tabuleiro.getJogador().setManaAtual(manaNova);
+                }
             }
         }
         cancelarCartaMostrada();
     }
 
     public void finalizarComErro() {
-        ganhou = true;
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    replaceSceneContent("ganhou.fxml");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+        if (acabou) {
+            if (!desconectado) {
+                atorRede.desconectar();
+                desconectado = true;
             }
-        });
+        } else {
+            Platform.runLater(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        replaceSceneContent("ganhou.fxml");
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        }
+
     }
 
     public boolean conectar() {
+        desconectado = false;
         return atorRede.conectar();
     }
 
@@ -555,5 +579,6 @@ public class Main extends Application {
             }
         });
         atorRede.desconectar();
+        desconectado = true;
     }
 }

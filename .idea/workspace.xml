@@ -2,25 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/JogadaUtils.class" afterPath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/JogadaUtils.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main$1.class" afterPath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main$2.class" afterPath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main$3.class" afterPath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main$4.class" afterPath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main$5.class" afterPath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main$6.class" afterPath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main$7.class" afterPath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main$7.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main$8.class" afterPath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main$8.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main$9.class" afterPath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main$9.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main.class" afterPath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/JogadaUtils.java" afterPath="$PROJECT_DIR$/src/sample/JogadaUtils.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Main.java" afterPath="$PROJECT_DIR$/src/sample/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/TelaJogoPresenterImpl.java" afterPath="$PROJECT_DIR$/src/sample/TelaJogoPresenterImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/bd/HeroiBD.java" afterPath="$PROJECT_DIR$/src/sample/bd/HeroiBD.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/entity/Heroi.java" afterPath="$PROJECT_DIR$/src/sample/entity/Heroi.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/netgames/AtorRede.java" afterPath="$PROJECT_DIR$/src/sample/netgames/AtorRede.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/tela_jogo.fxml" afterPath="$PROJECT_DIR$/src/sample/tela_jogo.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/entity/Efeito.java" afterPath="$PROJECT_DIR$/src/sample/entity/Efeito.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -79,19 +63,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="TelaJogoPresenterImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/TelaJogoPresenterImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="359">
+              <caret line="56" column="31" lean-forward="false" selection-start-line="56" selection-start-column="31" selection-end-line="56" selection-end-column="31" />
+              <folding>
+                <element signature="method#onCancelarClicked#0;class#TelaJogoPresenterImpl#0" expanded="false" />
+                <element signature="method#onConfirmarClicked#0;class#TelaJogoPresenterImpl#0" expanded="false" />
+                <marker date="1499127126308" expanded="false" signature="1493:1511" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="23" column="60" lean-forward="false" selection-start-line="23" selection-start-column="60" selection-end-line="23" selection-end-column="60" />
+            <state relative-caret-position="206">
+              <caret line="327" column="8" lean-forward="false" selection-start-line="327" selection-start-column="8" selection-end-line="327" selection-end-column="8" />
               <folding>
-                <element signature="e#4795#4796#0" expanded="true" />
-                <element signature="e#4846#4847#0" expanded="true" />
-                <element signature="e#4885#4886#0" expanded="true" />
-                <element signature="e#4937#4938#0" expanded="true" />
-                <element signature="method#atualizaMesaAdversario#0;class#Main#0" expanded="false" />
+                <element signature="method#goToTelaInicial#0;class#Main#0" expanded="false" />
+                <element signature="method#goToTelaSelecao#0;class#Main#0" expanded="false" />
+                <element signature="method#goToTelaJogo#0;class#Main#0" expanded="false" />
+                <element signature="method#showBotoesCarta#0;class#Main#0" expanded="false" />
+                <element signature="method#hideCartaAndBotoesCarta#0;class#Main#0" expanded="false" />
+                <element signature="method#setImgVisible#0;class#Main#0" expanded="false" />
+                <element signature="method#setImgGone#0;class#Main#0" expanded="false" />
+                <element signature="method#replaceSceneContent#0;class#Main#0" expanded="false" />
+                <element signature="method#start#0;class#Main#0" expanded="false" />
+                <element signature="method#procurarPartida#0;class#Main#0" expanded="false" />
+                <element signature="method#receberSolicitacaoInicio#0;class#Main#0" expanded="false" />
+                <element signature="method#showResultadoJogo#0;class#Main#0" expanded="false" />
+                <element signature="method#prepararMaosPrimeiroTurno#0;class#Main#0" expanded="false" />
+                <element signature="method#usarPoderHeroico#0;class#Main#0" expanded="false" />
+                <element signature="method#abrirCarta#0;class#Main#0" expanded="false" />
                 <element signature="method#atualizaMaoJogador#0;class#Main#0" expanded="false" />
-                <marker date="1499128896749" expanded="true" signature="26287:26296" ph="{...}" />
+                <element signature="method#atualizaVidaJogadores#0;class#Main#0" expanded="false" />
+                <element signature="method#atualizaManaJogador#0;class#Main#0" expanded="false" />
+                <element signature="method#cancelarCartaMostrada#0;class#Main#0" expanded="false" />
+                <marker date="1499133447880" expanded="true" signature="27064:27102" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -100,8 +111,50 @@
       <file leaf-file-name="AtorRede.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/netgames/AtorRede.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="466">
-              <caret line="72" column="13" lean-forward="true" selection-start-line="72" selection-start-column="13" selection-end-line="72" selection-end-column="13" />
+            <state relative-caret-position="190">
+              <caret line="45" column="26" lean-forward="true" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
+              <folding>
+                <element signature="e#2461#2462#0" expanded="true" />
+                <element signature="e#2514#2515#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Tabuleiro.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/entity/Tabuleiro.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="88" column="28" lean-forward="false" selection-start-line="88" selection-start-column="28" selection-end-line="88" selection-end-column="28" />
+              <folding>
+                <element signature="method#getIdCartas#0;class#Tabuleiro#0" expanded="false" />
+                <element signature="method#setIdCartas#0;class#Tabuleiro#0" expanded="false" />
+                <element signature="method#destruirLacaiosInimigos#0;class#Tabuleiro#0" expanded="false" />
+                <element signature="method#promoverAtaques#0;class#Tabuleiro#0" expanded="false" />
+                <element signature="method#getVidaCartas#0;class#Tabuleiro#0" expanded="false" />
+                <element signature="method#setVidaLacaiosJogador#0;class#Tabuleiro#0" expanded="false" />
+                <element signature="method#setVidaLacaiosAdversario#0;class#Tabuleiro#0" expanded="false" />
+                <element signature="method#setVidaCartas#0;class#Tabuleiro#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Efeito.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/entity/Efeito.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CartaBD.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/bd/CartaBD.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="402">
+              <caret line="73" column="76" lean-forward="false" selection-start-line="73" selection-start-column="76" selection-end-line="73" selection-end-column="76" />
               <folding />
             </state>
           </provider>
@@ -194,7 +247,6 @@
         <option value="$PROJECT_DIR$/ngnrtFramework.jar!/br/ufsc/inf/leobr/cliente/ProxyConectadoEstado.java" />
         <option value="$PROJECT_DIR$/ngnrtFramework.jar!/br/ufsc/inf/leobr/cliente/Cliente.java" />
         <option value="$PROJECT_DIR$/ngnrtFramework.jar!/com/retrogui/dualrpc/client/DualRpcClient.class" />
-        <option value="$PROJECT_DIR$/src/sample/entity/Efeito.java" />
         <option value="$PROJECT_DIR$/src/sample/entity/Tabuleiro.java" />
         <option value="$PROJECT_DIR$/src/sample/entity/CartaLacaio.java" />
         <option value="$PROJECT_DIR$/src/sample/entity/Carta.java" />
@@ -207,6 +259,7 @@
         <option value="$PROJECT_DIR$/src/sample/TelaJogoPresenterImpl.java" />
         <option value="$PROJECT_DIR$/src/sample/netgames/AtorRede.java" />
         <option value="$PROJECT_DIR$/src/sample/bd/CartaBD.java" />
+        <option value="$PROJECT_DIR$/src/sample/entity/Efeito.java" />
         <option value="$PROJECT_DIR$/src/sample/Main.java" />
       </list>
     </option>
@@ -792,12 +845,12 @@
       <workItem from="1499035270696" duration="2777000" />
       <workItem from="1499038772460" duration="7734000" />
       <workItem from="1499092632623" duration="2440000" />
-      <workItem from="1499125059966" duration="3830000" />
+      <workItem from="1499125059966" duration="7947000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72077000" />
+    <option name="totallyTimeSpent" value="76194000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -824,7 +877,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32756758" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32864866" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17004265" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
@@ -835,7 +888,7 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27567568" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27567568" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -899,42 +952,33 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/sample/Main.java</url>
-          <line>174</line>
+          <line>372</line>
           <properties />
-          <option name="timeStamp" value="49" />
+          <option name="timeStamp" value="68" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/sample/Main.java</url>
-          <line>175</line>
+          <line>386</line>
           <properties />
-          <option name="timeStamp" value="51" />
+          <option name="timeStamp" value="69" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/sample/Main.java</url>
-          <line>196</line>
+          <line>315</line>
           <properties />
-          <option name="timeStamp" value="52" />
+          <option name="timeStamp" value="70" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/sample/Main.java</url>
-          <line>203</line>
+          <line>327</line>
           <properties />
-          <option name="timeStamp" value="55" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/sample/Main.java</url>
-          <line>205</line>
-          <properties />
-          <option name="timeStamp" value="63" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/sample/Main.java</url>
-          <line>206</line>
-          <properties />
-          <option name="timeStamp" value="64" />
+          <option name="timeStamp" value="71" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="65" />
+      <breakpoints-dialog>
+        <breakpoints-dialog />
+      </breakpoints-dialog>
+      <option name="time" value="72" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -1023,13 +1067,6 @@
     <entry file="jar://$USER_HOME$/Downloads/oracle-jdk8/oracle-jdk8/javafx-src.zip!/javafx/scene/image/ImageView.java" />
     <entry file="file://$PROJECT_DIR$/src/sample/netgames/OuvidorProxy.java" />
     <entry file="file://$PROJECT_DIR$/src/sample/netgames/Proxy.java" />
-    <entry file="file://$PROJECT_DIR$/src/sample/entity/InformacoesJogada.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/ngnrtFramework.jar!/com/retrogui/dualrpc/common/RpcWorker.class" />
     <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.java" />
     <entry file="jar://$PROJECT_DIR$/ngnrtFramework.jar!/br/ufsc/inf/leobr/cliente/Jogada.java" />
@@ -1075,24 +1112,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/entity/Tabuleiro.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="19" lean-forward="false" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
-          <folding>
-            <element signature="method#getIdCartas#0;class#Tabuleiro#0" expanded="false" />
-            <element signature="method#setIdCartas#0;class#Tabuleiro#0" expanded="false" />
-            <element signature="method#adicionaLacaio#0;class#Tabuleiro#0" expanded="false" />
-            <element signature="method#destruirLacaiosInimigos#0;class#Tabuleiro#0" expanded="false" />
-            <element signature="method#promoverAtaques#0;class#Tabuleiro#0" expanded="false" />
-            <element signature="method#getVidaCartas#0;class#Tabuleiro#0" expanded="false" />
-            <element signature="method#setVidaLacaiosJogador#0;class#Tabuleiro#0" expanded="false" />
-            <element signature="method#setVidaLacaiosAdversario#0;class#Tabuleiro#0" expanded="false" />
-            <element signature="method#setVidaCartas#0;class#Tabuleiro#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="758">
@@ -1106,16 +1125,6 @@
         <state relative-caret-position="300">
           <caret line="58" column="19" lean-forward="false" selection-start-line="58" selection-start-column="19" selection-end-line="58" selection-end-column="19" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/entity/Efeito.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="49" column="67" lean-forward="false" selection-start-line="49" selection-start-column="67" selection-end-line="49" selection-end-column="67" />
-          <folding>
-            <element signature="method#Efeito#0;class#Efeito#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1173,26 +1182,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/TelaJogoPresenterImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="568">
-          <caret line="52" column="5" lean-forward="true" selection-start-line="52" selection-start-column="5" selection-end-line="52" selection-end-column="5" />
-          <folding>
-            <element signature="method#onCancelarClicked#0;class#TelaJogoPresenterImpl#0" expanded="false" />
-            <element signature="method#onConfirmarClicked#0;class#TelaJogoPresenterImpl#0" expanded="false" />
-            <marker date="1499127126308" expanded="false" signature="1493:1511" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/bd/CartaBD.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="419">
-          <caret line="44" column="19" lean-forward="true" selection-start-line="44" selection-start-column="19" selection-end-line="44" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/entity/Jogador.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="517">
@@ -1206,26 +1195,95 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/entity/InformacoesJogada.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="714">
+          <caret line="60" column="25" lean-forward="true" selection-start-line="60" selection-start-column="25" selection-end-line="60" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/netgames/AtorRede.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="466">
-          <caret line="72" column="13" lean-forward="true" selection-start-line="72" selection-start-column="13" selection-end-line="72" selection-end-column="13" />
+        <state relative-caret-position="190">
+          <caret line="45" column="26" lean-forward="true" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
+          <folding>
+            <element signature="e#2461#2462#0" expanded="true" />
+            <element signature="e#2514#2515#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/entity/Tabuleiro.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="88" column="28" lean-forward="false" selection-start-line="88" selection-start-column="28" selection-end-line="88" selection-end-column="28" />
+          <folding>
+            <element signature="method#getIdCartas#0;class#Tabuleiro#0" expanded="false" />
+            <element signature="method#setIdCartas#0;class#Tabuleiro#0" expanded="false" />
+            <element signature="method#destruirLacaiosInimigos#0;class#Tabuleiro#0" expanded="false" />
+            <element signature="method#promoverAtaques#0;class#Tabuleiro#0" expanded="false" />
+            <element signature="method#getVidaCartas#0;class#Tabuleiro#0" expanded="false" />
+            <element signature="method#setVidaLacaiosJogador#0;class#Tabuleiro#0" expanded="false" />
+            <element signature="method#setVidaLacaiosAdversario#0;class#Tabuleiro#0" expanded="false" />
+            <element signature="method#setVidaCartas#0;class#Tabuleiro#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/bd/CartaBD.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="402">
+          <caret line="73" column="76" lean-forward="false" selection-start-line="73" selection-start-column="76" selection-end-line="73" selection-end-column="76" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/entity/Efeito.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="31" column="0" lean-forward="true" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/TelaJogoPresenterImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="56" column="31" lean-forward="false" selection-start-line="56" selection-start-column="31" selection-end-line="56" selection-end-column="31" />
+          <folding>
+            <element signature="method#onCancelarClicked#0;class#TelaJogoPresenterImpl#0" expanded="false" />
+            <element signature="method#onConfirmarClicked#0;class#TelaJogoPresenterImpl#0" expanded="false" />
+            <marker date="1499127126308" expanded="false" signature="1493:1511" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="23" column="60" lean-forward="false" selection-start-line="23" selection-start-column="60" selection-end-line="23" selection-end-column="60" />
+        <state relative-caret-position="206">
+          <caret line="327" column="8" lean-forward="false" selection-start-line="327" selection-start-column="8" selection-end-line="327" selection-end-column="8" />
           <folding>
-            <element signature="e#4795#4796#0" expanded="true" />
-            <element signature="e#4846#4847#0" expanded="true" />
-            <element signature="e#4885#4886#0" expanded="true" />
-            <element signature="e#4937#4938#0" expanded="true" />
-            <element signature="method#atualizaMesaAdversario#0;class#Main#0" expanded="false" />
+            <element signature="method#goToTelaInicial#0;class#Main#0" expanded="false" />
+            <element signature="method#goToTelaSelecao#0;class#Main#0" expanded="false" />
+            <element signature="method#goToTelaJogo#0;class#Main#0" expanded="false" />
+            <element signature="method#showBotoesCarta#0;class#Main#0" expanded="false" />
+            <element signature="method#hideCartaAndBotoesCarta#0;class#Main#0" expanded="false" />
+            <element signature="method#setImgVisible#0;class#Main#0" expanded="false" />
+            <element signature="method#setImgGone#0;class#Main#0" expanded="false" />
+            <element signature="method#replaceSceneContent#0;class#Main#0" expanded="false" />
+            <element signature="method#start#0;class#Main#0" expanded="false" />
+            <element signature="method#procurarPartida#0;class#Main#0" expanded="false" />
+            <element signature="method#receberSolicitacaoInicio#0;class#Main#0" expanded="false" />
+            <element signature="method#showResultadoJogo#0;class#Main#0" expanded="false" />
+            <element signature="method#prepararMaosPrimeiroTurno#0;class#Main#0" expanded="false" />
+            <element signature="method#usarPoderHeroico#0;class#Main#0" expanded="false" />
+            <element signature="method#abrirCarta#0;class#Main#0" expanded="false" />
             <element signature="method#atualizaMaoJogador#0;class#Main#0" expanded="false" />
-            <marker date="1499128896749" expanded="true" signature="26287:26296" ph="{...}" />
+            <element signature="method#atualizaVidaJogadores#0;class#Main#0" expanded="false" />
+            <element signature="method#atualizaManaJogador#0;class#Main#0" expanded="false" />
+            <element signature="method#cancelarCartaMostrada#0;class#Main#0" expanded="false" />
+            <marker date="1499133447880" expanded="true" signature="27064:27102" ph="{...}" />
           </folding>
         </state>
       </provider>

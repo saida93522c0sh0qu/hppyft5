@@ -25,7 +25,7 @@ public class Main extends Application {
     private static final String ID_CARTA_SELECIONADA = "#carta_mostrada";
     private static final String ID_VIDA_HEROI_JOGADOR = "#vida_heroi_jogador";
     private static final String ID_VIDA_HEROI_ADVERSARIO = "#vida_heroi_adversario";
-    private static final String ID_VIDA_CARTA_JOGADOR_1 = "#vida_carta_jogador_1";
+    private static final String ID_VIDA_CARTA_JOGADOR_1 = "#vida_cgit rta_jogador_1";
     private static final String ID_VIDA_CARTA_JOGADOR_2 = "#vida_carta_jogador_2";
     private static final String ID_VIDA_CARTA_JOGADOR_3 = "#vida_carta_jogador_3";
     private static final String ID_VIDA_CARTA_JOGADOR_4 = "#vida_carta_jogador_4";

@@ -28,7 +28,7 @@
         <ImageView fx:id="carta_4" fitHeight="104.0" fitWidth="73.0" layoutX="219.0" layoutY="518.0" onMouseClicked="#onCarta3Clicked" pickOnBounds="true" preserveRatio="true" />
         <ImageView fx:id="carta_5" fitHeight="104.0" fitWidth="73.0" layoutX="292.0" layoutY="518.0" onMouseClicked="#onCarta4Clicked" pickOnBounds="true" preserveRatio="true" />
         <ImageView fx:id="carta_6" fitHeight="104.0" fitWidth="73.0" layoutX="365.0" layoutY="518.0" onMouseClicked="#onCarta5Clicked" pickOnBounds="true" preserveRatio="true" />
-        <ImageView fx:id="carta_mesa_jogador_1" fitHeight="118.0" fitWidth="83.0" layoutX="175.0" layoutY="293.0" onMouseClicked="#onCartaMesa1Clicked" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="carta_mesa_jogador_1" fitHeight="118.0" fitWidth="83.0" layoutX="175.0" layoutY="293.0" pickOnBounds="true" preserveRatio="true" />
         <ImageView fx:id="carta_mesa_jogador_2" fitHeight="118.0" fitWidth="83.0" layoutX="287.0" layoutY="293.0" pickOnBounds="true" preserveRatio="true" />
         <ImageView fx:id="carta_mesa_jogador_3" fitHeight="118.0" fitWidth="83.0" layoutX="417.0" layoutY="293.0" pickOnBounds="true" preserveRatio="true" />
         <ImageView fx:id="carta_mesa_jogador_4" fitHeight="118.0" fitWidth="83.0" layoutX="535.0" layoutY="293.0" pickOnBounds="true" preserveRatio="true" />
@@ -53,11 +53,6 @@
         <ImageView fx:id="finalizar_turno_button" fitHeight="48.0" fitWidth="97.0" layoutX="783.0" layoutY="257.0" onMouseClicked="#onFinalizarTurnoClicked" pickOnBounds="true" preserveRatio="true">
             <image>
                 <Image url="@images/botao_finalizar_turno.png" />
-            </image>
-        </ImageView>
-        <ImageView fx:id="desistir_button" fitHeight="48.0" fitWidth="113.0" layoutX="870.0" layoutY="269.0" onMouseClicked="#onDesistirClicked" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@images/botao_desistir.png" />
             </image>
         </ImageView>
         <ImageView fx:id="carta_mostrada" fitHeight="484.0" fitWidth="370.0" layoutX="302.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" visible="false">

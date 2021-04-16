@@ -77,7 +77,6 @@ public class AtorRede implements OuvidorProxy {
 
     @Override
     public void receberMensagem(String msg) {
-        //TODO
     }
 
     @Override

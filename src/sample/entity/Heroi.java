@@ -9,7 +9,8 @@ public class Heroi {
     protected Baralho baralho;
     protected String caminhoImg;
 
-    public Heroi(PoderHeroico poderHeroico, Baralho baralho, String caminhoImg) {
+    public Heroi(int id, PoderHeroico poderHeroico, Baralho baralho, String caminhoImg) {
+        this.id = id;
         this.poderHeroico = poderHeroico;
         this.baralho = baralho;
         this.caminhoImg = Carta.CARTA_IMG_PATH + caminhoImg;

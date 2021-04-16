@@ -32,28 +32,39 @@ public class Efeito {
 
     public static void aplicarEfeito(int efeitoId, int qtdEfeito) {
         switch (efeitoId) {
-            case DANO_HEROI_INIMIGO:
+            case DANO_HEROI_INIMIGO: {
                 int ptsVidaInimigo = Main.getInstance().getTabuleiro().getAdversario().getPontosDeVida();
-                Main.getInstance().getTabuleiro().getAdversario().setPontosDeVida(ptsVidaInimigo - qtdEfeito);
+                int ptsNovos = ptsVidaInimigo - qtdEfeito;
+                Main.getInstance().getTabuleiro().getAdversario().setPontosDeVida(ptsNovos);
                 break;
-            case COMPRA_CARTA:
+            }
+            case COMPRA_CARTA: {
                 for (int i = 0; i < qtdEfeito; i++) {
                     Main.getInstance().getTabuleiro().getJogador().comprarCarta();
                 }
                 Main.getInstance().atualizaMaoJogador();
                 break;
-            case DESTROI_INIMIGOS:
+            }
+            case DESTROI_INIMIGOS: {
                 Main.getInstance().getTabuleiro().destruirLacaiosInimigos();
                 break;
-            case GANHA_MANA:
+            }
+            case GANHA_MANA: {
                 int manaAtual = Main.getInstance().getTabuleiro().getJogador().getManaAtual();
-                Main.getInstance().getTabuleiro().getJogador().setManaAtual(manaAtual + qtdEfeito);
+                int manaNova = manaAtual + qtdEfeito;
+                Main.getInstance().getTabuleiro().getJogador().setManaAtual(manaNova);
                 break;
-            case DANO_HEROI_JOGADOR:
+            }
+            case DANO_HEROI_JOGADOR: {
                 int ptsVidaJogador = Main.getInstance().getTabuleiro().getJogador().getPontosDeVida();
-                Main.getInstance().getTabuleiro().getJogador().setPontosDeVida(ptsVidaJogador - qtdEfeito);
+                int ptsVidanovo = ptsVidaJogador - qtdEfeito;
+                Main.getInstance().getTabuleiro().getJogador().setPontosDeVida(ptsVidanovo);
+                break;
+            }
+            default:
                 break;
         }
+        Main.getInstance().verificaFimJogo();
     }
 
 }

@@ -16,23 +16,6 @@ public class TelaJogoPresenterImpl {
         }
     }
 
-    public void onCartaMesa1Clicked(MouseEvent mouseEvent) {
-        //TODO TIRAR ISSO AKI DEPOIS
-        ImageView imgView = (ImageView) Main.getInstance().stage.getScene().lookup("#carta_mesa_jogador_1");
-//        Image image1 = new Image("/src/sample/carta_teste2.png", 83.0, 118.0, false, false);
-
-        FileInputStream fis = null;
-        try {
-            fis = new FileInputStream(new File("carta_teste2.png"));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        Image image1 = new Image(fis);
-        imgView.setImage(image1);
-        System.out.println("passou aki");
-    }
-
     public void onCarta0Clicked(MouseEvent mouseEvent) {
         if (Main.getInstance().botoesGeraisDisponiveis) {
             Main.getInstance().abrirCarta(0);
@@ -66,12 +49,6 @@ public class TelaJogoPresenterImpl {
     public void onCarta5Clicked(MouseEvent mouseEvent) {
         if (Main.getInstance().botoesGeraisDisponiveis) {
             Main.getInstance().abrirCarta(5);
-        }
-    }
-
-    public void onDesistirClicked(MouseEvent mouseEvent) throws Exception {
-        if (Main.getInstance().botoesGeraisDisponiveis) {
-            Main.getInstance().desistir();
         }
     }
 

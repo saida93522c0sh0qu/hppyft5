@@ -532,10 +532,8 @@ public class Main extends Application {
             } else {
                 Efeito.aplicarEfeito(((CartaFeitico) cartaMostrada).getEfeito());
                 tabuleiro.getJogador().removeCarta(posicaoMaoCartaMostrada);
-                if (custoMana > 0) {
-                    int manaNova = manaAtual - custoMana;
-                    tabuleiro.getJogador().setManaAtual(manaNova);
-                }
+                int manaNova = tabuleiro.getJogador().getManaAtual() - custoMana;
+                tabuleiro.getJogador().setManaAtual(manaNova);
             }
         }
         cancelarCartaMostrada();

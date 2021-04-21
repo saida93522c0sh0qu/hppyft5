@@ -1,23 +1,24 @@
 package sample.entity;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class Baralho {
 
-    protected List<Integer> cartas;
+    protected ArrayList<Integer> cartas;
     protected int cartasRestantes;
 
-    public Baralho(List<Integer> cartas) {
+    public Baralho(ArrayList<Integer> cartas) {
         this.cartas = cartas;
         this.cartasRestantes = 30;
     }
 
     public Integer retiraCarta() {
         if (cartasRestantes > 0) {
-            Integer idCarta = (int) Math.round(Math.random() * cartasRestantes);
-            cartas.remove(idCarta);
+            int index = (int) Math.round(Math.random() * 1000) % cartasRestantes;
+            Integer cartaId = cartas.get(index);
+            cartas.remove(index);
             cartasRestantes--;
-            return idCarta;
+            return cartaId;
         } else {
             return --cartasRestantes;
         }

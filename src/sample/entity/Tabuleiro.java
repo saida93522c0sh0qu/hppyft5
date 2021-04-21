@@ -103,6 +103,7 @@ public class Tabuleiro {
         for (int i = 0; i < cartaPosicoesAdversario.length; i++) {
             cartaPosicoesAdversario[i] = null;
         }
+        Main.getInstance().atualizaMesaAdversario();
     }
 
     public void promoverAtaques() {

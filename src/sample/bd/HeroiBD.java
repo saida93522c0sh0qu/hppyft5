@@ -13,7 +13,7 @@ public class HeroiBD {
         switch (idHeroi) {
             case 1:
                 PoderHeroico ph1 = new PoderHeroico("ph_bruxo.png", new Efeito(Efeito.COMPRA_CARTA, 1));
-                List<Integer> list1 = new ArrayList<>();
+                ArrayList<Integer> list1 = new ArrayList<>();
                 for (int i = 2; i <= 31; i++) {
                     list1.add(i);
                 }
@@ -21,7 +21,7 @@ public class HeroiBD {
                 return new Heroi(idHeroi, ph1, bar1, "bruxo_jogo.png");
             case 2:
                 PoderHeroico ph2 = new PoderHeroico("ph_cacador.png", new Efeito(Efeito.DANO_HEROI_INIMIGO, 2));
-                List<Integer> list2 = new ArrayList<>();
+                ArrayList<Integer> list2 = new ArrayList<>();
                 for (int i = 32; i <= 61; i++) {
                     list2.add(i);
                 }

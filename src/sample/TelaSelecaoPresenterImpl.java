@@ -64,21 +64,25 @@ public class TelaSelecaoPresenterImpl {
 
     public void onBotaoEscolhidoClicked(MouseEvent mouseEvent) {
         if (!mHeroiConfirmado && mIdHeroiSelecionado != null && Main.getInstance().conectar()) {
-            Scene scene = Main.getInstance().stage.getScene();
-            ImageView escolhaButton = (ImageView) scene.lookup(VIEW_ID_ESCOLHA_BUTTON);
-            ImageView bruxoSelecao = (ImageView) scene.lookup(VIEW_ID_BRUXO_SELECAO);
-            ImageView cacadorSelecao = (ImageView) scene.lookup(VIEW_ID_CACADOR_SELECAO);
-            ImageView procurarPartidaButton = (ImageView) scene.lookup(VIEW_ID_PROCURAR_PARTIDA_BUTTON);
-
-            escolhaButton.setOpacity(OPACITY_NOT_SELECTABLE);
-            bruxoSelecao.setOpacity(OPACITY_NOT_SELECTABLE);
-            cacadorSelecao.setOpacity(OPACITY_NOT_SELECTABLE);
-            procurarPartidaButton.setOpacity(OPACITY_SELECTED);
+            changeEscolhidoOpacity();
 
             mHeroiConfirmado = true;
 
             Main.getInstance().recebeIdHeroi(mIdHeroiSelecionado);
         }
 
+    }
+
+    private void changeEscolhidoOpacity() {
+        Scene scene = Main.getInstance().stage.getScene();
+        ImageView escolhaButton = (ImageView) scene.lookup(VIEW_ID_ESCOLHA_BUTTON);
+        ImageView bruxoSelecao = (ImageView) scene.lookup(VIEW_ID_BRUXO_SELECAO);
+        ImageView cacadorSelecao = (ImageView) scene.lookup(VIEW_ID_CACADOR_SELECAO);
+        ImageView procurarPartidaButton = (ImageView) scene.lookup(VIEW_ID_PROCURAR_PARTIDA_BUTTON);
+
+        escolhaButton.setOpacity(OPACITY_NOT_SELECTABLE);
+        bruxoSelecao.setOpacity(OPACITY_NOT_SELECTABLE);
+        cacadorSelecao.setOpacity(OPACITY_NOT_SELECTABLE);
+        procurarPartidaButton.setOpacity(OPACITY_SELECTED);
     }
 }

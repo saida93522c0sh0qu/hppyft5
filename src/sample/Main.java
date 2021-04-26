@@ -56,6 +56,11 @@ public class Main extends Application {
     private static final String ID_PH_JOGADOR = "#ph_jogador";
     private static final String ID_PH_ADVERSARIO = "#ph_adversario";
     private static final String ID_MANA_JOGADOR = "#mana_jogador";
+    public static final String GANHOU_FXML = "ganhou.fxml";
+    public static final String PERDEU_FXML = "perdeu.fxml";
+    public static final String TELA_INICIAL_FXML = "tela_inicial.fxml";
+    public static final String TELA_SELECAO_FXML = "tela_selecao.fxml";
+    public static final String TELA_JOGO_FXML = "tela_jogo.fxml";
 
     protected Stage stage;
     private static Main instance;
@@ -89,22 +94,45 @@ public class Main extends Application {
     }
 
     private void goToTelaInicial() throws Exception {
-        replaceSceneContent("tela_inicial.fxml");
+        replaceSceneContent(TELA_INICIAL_FXML);
         stage.show();
     }
 
     public void goToTelaSelecao() throws Exception {
-        replaceSceneContent("tela_selecao.fxml");
+        replaceSceneContent(TELA_SELECAO_FXML);
         stage.setWidth(1133.0);
         stage.setHeight(440.0);
         stage.show();
     }
 
     public void goToTelaJogo() throws Exception {
-        replaceSceneContent("tela_jogo.fxml");
-        stage.setWidth(982.0);
-        stage.setHeight(620.0);
+        replaceSceneContent(TELA_JOGO_FXML);
+        stage.setWidth(1000.0);
+        stage.setHeight(665.0);
         stage.show();
+    }
+
+
+    private void goToTelaPerdeu() {
+        try {
+            replaceSceneContent(PERDEU_FXML);
+            stage.setWidth(430.0);
+            stage.setHeight(440.0);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void goToTelaGanhou() {
+        try {
+            replaceSceneContent(GANHOU_FXML);
+            stage.setWidth(600.0);
+            stage.setHeight(200.0);
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void habilitarBotoes() {
@@ -240,22 +268,14 @@ public class Main extends Application {
             Platform.runLater(new Runnable() {
                 @Override
                 public void run() {
-                    try {
-                        replaceSceneContent("perdeu.fxml");
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                    goToTelaPerdeu();
                 }
             });
         } else {
             Platform.runLater(new Runnable() {
                 @Override
                 public void run() {
-                    try {
-                        replaceSceneContent("ganhou.fxml");
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                    goToTelaGanhou();
                 }
             });
         }
@@ -530,12 +550,11 @@ public class Main extends Application {
                     tabuleiro.getJogador().setManaAtual(manaNova);
                 }
             } else {
-                Efeito.aplicarEfeito(((CartaFeitico) cartaMostrada).getEfeito());
+                Efeito efeitoCarta = ((CartaFeitico) cartaMostrada).getEfeito();
                 tabuleiro.getJogador().removeCarta(posicaoMaoCartaMostrada);
-                if (custoMana > 0) {
-                    int manaNova = manaAtual - custoMana;
-                    tabuleiro.getJogador().setManaAtual(manaNova);
-                }
+                Efeito.aplicarEfeito(efeitoCarta);
+                int manaNova = tabuleiro.getJogador().getManaAtual() - custoMana;
+                tabuleiro.getJogador().setManaAtual(manaNova);
             }
         }
         cancelarCartaMostrada();
@@ -551,11 +570,7 @@ public class Main extends Application {
             Platform.runLater(new Runnable() {
                 @Override
                 public void run() {
-                    try {
-                        replaceSceneContent("ganhou.fxml");
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+                    goToTelaGanhou();
                 }
             });
         }

@@ -235,10 +235,8 @@ public class Main extends Application {
                 InformacoesIniciais informacoesIniciais = new InformacoesIniciais();
                 informacoesIniciais.setIdHeroi(JogadaUtils.IntegerToInt(tabuleiro.getJogador().getIdHeroi()));
                 atorRede.enviaJogada(informacoesIniciais);
-                prepararMaosPrimeiroTurno();
-            } else {
-                prepararMaosPrimeiroTurno();
             }
+            prepararMaosPrimeiroTurno();
         } else {
             InformacoesJogada informacoesJogada = (InformacoesJogada) jogada;
             tabuleiro.setIdCartaPosicoesJogador(JogadaUtils.IntArrayToInteger(informacoesJogada.getIdCartasNoCampoAdversario()));
@@ -295,7 +293,7 @@ public class Main extends Application {
 
 
     public void prepararMaosPrimeiroTurno() throws Exception {
-        atualiarTelaJogoPrimeiraVez();
+        atualizarTelaJogoPrimeiraVez();
 
         for (int i = 0; i < 3; i++) {
             tabuleiro.getJogador().comprarCarta();
@@ -308,7 +306,7 @@ public class Main extends Application {
         }
     }
 
-    private void atualiarTelaJogoPrimeiraVez() {
+    private void atualizarTelaJogoPrimeiraVez() {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {

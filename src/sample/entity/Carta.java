@@ -5,7 +5,7 @@ import sample.bd.CartaBD;
 
 public abstract class Carta {
 
-    public static final String CARTA_IMG_PATH = "src\\sample\\images\\";
+    public static final String CARTA_IMG_PATH = "src/sample/images/";
 
     protected int id;
     protected int custoMana;

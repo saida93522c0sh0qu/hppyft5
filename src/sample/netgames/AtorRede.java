@@ -4,11 +4,37 @@ import br.ufsc.inf.leobr.cliente.*;
 import br.ufsc.inf.leobr.cliente.exception.*;
 import sample.Main;
 
+import javax.swing.*;
+import java.awt.*;
+import java.io.*;
+import java.util.Properties;
+
 public class AtorRede implements OuvidorProxy {
 
     protected br.ufsc.inf.leobr.cliente.Proxy proxy;
-    //    protected final String servidor = "netgames.labsoft.ufsc.br";
-    protected final String servidor = "localhost";
+//    protected final String servidor = "netgames.labsoft.ufsc.br";
+//    protected static final String servidor = "localhost";
+    protected static final String servidor = AtorRede.getProp();
+
+    private static String getProp() {
+        String result = "localhost";
+        Properties prop = new Properties();
+        String propFileName = "config.properties";
+
+        try {
+            InputStream inputStream = new FileInputStream(new File(propFileName));
+            prop.load(inputStream);
+            result = prop.getProperty("servidor");
+            inputStream.close();
+            return result;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return result;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return result;
+        }
+    }
 
     public AtorRede() {
         proxy = Proxy.getInstance();
@@ -18,8 +44,12 @@ public class AtorRede implements OuvidorProxy {
     public boolean conectar() {
         boolean retorno = true;
         try {
-            proxy.conectar(servidor, "NomeJogador" + Long.toString(Math.round(Math.random() * 1000)));
+            proxy.conectar(servidor, "NomeJogador");
+            JOptionPane.showMessageDialog(new Frame(),
+                    "CONECTOU");
         } catch (JahConectadoException | NaoPossivelConectarException | ArquivoMultiplayerException ex) {
+            JOptionPane.showMessageDialog(new Frame(),
+                    ex.getMessage());
             ex.printStackTrace();
             retorno = false;
         }

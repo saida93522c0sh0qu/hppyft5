@@ -25,7 +25,7 @@ public class Main extends Application {
     private static final String ID_CARTA_SELECIONADA = "#carta_mostrada";
     private static final String ID_VIDA_HEROI_JOGADOR = "#vida_heroi_jogador";
     private static final String ID_VIDA_HEROI_ADVERSARIO = "#vida_heroi_adversario";
-    private static final String ID_VIDA_CARTA_JOGADOR_1 = "#vida_carta_jogador_1";
+    private static final String ID_VIDA_CARTA_JOGADOR_1 = "#vida_cgit rta_jogador_1";
     private static final String ID_VIDA_CARTA_JOGADOR_2 = "#vida_carta_jogador_2";
     private static final String ID_VIDA_CARTA_JOGADOR_3 = "#vida_carta_jogador_3";
     private static final String ID_VIDA_CARTA_JOGADOR_4 = "#vida_carta_jogador_4";
@@ -235,10 +235,8 @@ public class Main extends Application {
                 InformacoesIniciais informacoesIniciais = new InformacoesIniciais();
                 informacoesIniciais.setIdHeroi(JogadaUtils.IntegerToInt(tabuleiro.getJogador().getIdHeroi()));
                 atorRede.enviaJogada(informacoesIniciais);
-                prepararMaosPrimeiroTurno();
-            } else {
-                prepararMaosPrimeiroTurno();
             }
+            prepararMaosPrimeiroTurno();
         } else {
             InformacoesJogada informacoesJogada = (InformacoesJogada) jogada;
             tabuleiro.setIdCartaPosicoesJogador(JogadaUtils.IntArrayToInteger(informacoesJogada.getIdCartasNoCampoAdversario()));
@@ -295,7 +293,7 @@ public class Main extends Application {
 
 
     public void prepararMaosPrimeiroTurno() throws Exception {
-        atualiarTelaJogoPrimeiraVez();
+        atualizarTelaJogoPrimeiraVez();
 
         for (int i = 0; i < 3; i++) {
             tabuleiro.getJogador().comprarCarta();
@@ -308,7 +306,7 @@ public class Main extends Application {
         }
     }
 
-    private void atualiarTelaJogoPrimeiraVez() {
+    private void atualizarTelaJogoPrimeiraVez() {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {

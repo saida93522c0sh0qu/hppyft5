@@ -576,8 +576,12 @@ public class Main extends Application {
     }
 
     public boolean conectar() {
-        desconectado = false;
-        return atorRede.conectar();
+        if (desconectado) {
+            desconectado = false;
+            return atorRede.conectar();
+        } else {
+            return !desconectado;
+        }
     }
 
     public void partidaNaoEncontrada() {

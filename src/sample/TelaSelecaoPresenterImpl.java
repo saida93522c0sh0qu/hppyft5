@@ -63,7 +63,8 @@ public class TelaSelecaoPresenterImpl {
     }
 
     public void onBotaoEscolhidoClicked(MouseEvent mouseEvent) {
-        if (!mHeroiConfirmado && mIdHeroiSelecionado != null && Main.getInstance().conectar()) {
+        boolean conectado = Main.getInstance().conectar();
+        if (!mHeroiConfirmado && mIdHeroiSelecionado != null && conectado) {
             changeEscolhidoOpacity();
 
             mHeroiConfirmado = true;

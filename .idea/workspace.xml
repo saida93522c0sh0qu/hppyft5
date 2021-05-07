@@ -1,8 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Hearthstone_APS_Alpha:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main$1.class" afterPath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main$10.class" afterPath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main$10.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main$11.class" afterPath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main$11.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main$2.class" afterPath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main$3.class" afterPath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main$4.class" afterPath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main$5.class" afterPath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main$5.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main$6.class" afterPath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main$6.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main$7.class" afterPath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main$7.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main$8.class" afterPath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main$8.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main$9.class" afterPath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main$9.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main.class" afterPath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/TelaSelecaoPresenterImpl.class" afterPath="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/TelaSelecaoPresenterImpl.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Main.java" afterPath="$PROJECT_DIR$/src/sample/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/TelaSelecaoPresenterImpl.java" afterPath="$PROJECT_DIR$/src/sample/TelaSelecaoPresenterImpl.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -64,11 +85,21 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="160" column="64" lean-forward="false" selection-start-line="160" selection-start-column="18" selection-end-line="160" selection-end-column="64" />
+            <state relative-caret-position="394">
+              <caret line="429" column="0" lean-forward="false" selection-start-line="429" selection-start-column="0" selection-end-line="429" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TelaSelecaoPresenterImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/sample/TelaSelecaoPresenterImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="584">
+              <caret line="65" column="51" lean-forward="false" selection-start-line="65" selection-start-column="51" selection-end-line="65" selection-end-column="51" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -174,10 +205,10 @@
         <option value="$PROJECT_DIR$/src/sample/tela_jogo.fxml" />
         <option value="$PROJECT_DIR$/src/sample/ganhou.fxml" />
         <option value="$PROJECT_DIR$/src/sample/perdeu.fxml" />
-        <option value="$PROJECT_DIR$/src/sample/TelaSelecaoPresenterImpl.java" />
         <option value="$PROJECT_DIR$/out/production/Hearthstone_APS_Alpha/sample/Main.class" />
-        <option value="$PROJECT_DIR$/src/sample/Main.java" />
         <option value="$PROJECT_DIR$/src/sample/entity/Baralho.java" />
+        <option value="$PROJECT_DIR$/src/sample/TelaSelecaoPresenterImpl.java" />
+        <option value="$PROJECT_DIR$/src/sample/Main.java" />
       </list>
     </option>
   </component>
@@ -189,17 +220,17 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="1912" />
+    <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1456" />
-    <option name="height" value="876" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectReloadState">
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
+    <navigator proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -212,51 +243,7 @@
       <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Hearthstone_APS_Alpha" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Hearthstone_APS_Alpha" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Hearthstone_APS_Alpha" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Hearthstone_APS_Alpha" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="out" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="production" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Hearthstone_APS_Alpha" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sample" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="GoToFile.includeJavaFiles" value="false" />
@@ -273,11 +260,11 @@
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/BattleSpears_final_Ronan_Knob_Leonardo_Machado (1)" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$2/Languages" value="JAVA" />
-    <property name="SearchEverywhereHistoryKey" value="Ato&#9;FILE&#9;file://C:/Users/Léo/IdeaProjects/Hearthstone_APS_Alpha/src/sample/netgames/AtorRede.java&#10;Main.class&#9;FILE&#9;jar://C:/Users/Léo/IdeaProjects/Hearthstone_APS_Alpha/ngnrtFramework.jar!/org/apache/log4j/chainsaw/Main.class&#10;Presen&#9;FILE&#9;file://C:/Users/bridge/IdeaProjects/hsapsalpha/hearthstone_project/src/sample/TelaSelecaoPresenterImpl.java&#10;Pro&#9;FILE&#9;jar://C:/Users/bridge/IdeaProjects/hsapsalpha/hearthstone_project/ngnrtFramework.jar!/br/ufsc/inf/leobr/cliente/Proxy.java&#10;per&#9;FILE&#9;file://C:/Users/bridge/IdeaProjects/hsapsalpha/hearthstone_project/src/sample/perdeu.fxml&#10;ganho&#9;FILE&#9;file://C:/Users/bridge/IdeaProjects/hsapsalpha/hearthstone_project/src/sample/ganhou.fxml&#10;perdeu&#9;FILE&#9;file://C:/Users/bridge/IdeaProjects/hsapsalpha/hearthstone_project/src/sample/perdeu.fxml&#10;tela_jogo&#9;FILE&#9;file://C:/Users/bridge/IdeaProjects/hsapsalpha/hearthstone_project/src/sample/tela_jogo.fxml&#10;tela_j&#9;FILE&#9;file://C:/Users/Léo/IdeaProjects/Hearthstone_APS_Alpha/src/sample/tela_jogo.fxml&#10;perde&#9;FILE&#9;file://C:/Users/Léo/IdeaProjects/Hearthstone_APS_Alpha/src/sample/images/perdeu.png&#10;JogaU&#9;FILE&#9;file://C:/Users/Léo/IdeaProjects/Hearthstone_APS_Alpha/src/sample/JogadaUtils.java&#10;CartaBD&#9;FILE&#9;file://C:/Users/Léo/IdeaProjects/Hearthstone_APS_Alpha/src/sample/bd/CartaBD.java&#10;Prese&#9;FILE&#9;file://C:/Users/Léo/IdeaProjects/Hearthstone_APS_Alpha/src/sample/TelaJogoPresenterImpl.java&#10;Efeito&#9;FILE&#9;file://C:/Users/Léo/IdeaProjects/Hearthstone_APS_Alpha/src/sample/entity/Efeito.java" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/Users/bridge/IdeaProjects/hsapsalpha/hearthstone_project/src/sample/TelaSelecaoPresenterImpl.java&#10;Ato&#9;FILE&#9;file://C:/Users/Léo/IdeaProjects/Hearthstone_APS_Alpha/src/sample/netgames/AtorRede.java&#10;Main.class&#9;FILE&#9;jar://C:/Users/Léo/IdeaProjects/Hearthstone_APS_Alpha/ngnrtFramework.jar!/org/apache/log4j/chainsaw/Main.class&#10;Presen&#9;FILE&#9;file://C:/Users/bridge/IdeaProjects/hsapsalpha/hearthstone_project/src/sample/TelaSelecaoPresenterImpl.java&#10;Pro&#9;FILE&#9;jar://C:/Users/bridge/IdeaProjects/hsapsalpha/hearthstone_project/ngnrtFramework.jar!/br/ufsc/inf/leobr/cliente/Proxy.java&#10;per&#9;FILE&#9;file://C:/Users/bridge/IdeaProjects/hsapsalpha/hearthstone_project/src/sample/perdeu.fxml&#10;ganho&#9;FILE&#9;file://C:/Users/bridge/IdeaProjects/hsapsalpha/hearthstone_project/src/sample/ganhou.fxml&#10;perdeu&#9;FILE&#9;file://C:/Users/bridge/IdeaProjects/hsapsalpha/hearthstone_project/src/sample/perdeu.fxml&#10;tela_jogo&#9;FILE&#9;file://C:/Users/bridge/IdeaProjects/hsapsalpha/hearthstone_project/src/sample/tela_jogo.fxml&#10;tela_j&#9;FILE&#9;file://C:/Users/Léo/IdeaProjects/Hearthstone_APS_Alpha/src/sample/tela_jogo.fxml&#10;perde&#9;FILE&#9;file://C:/Users/Léo/IdeaProjects/Hearthstone_APS_Alpha/src/sample/images/perdeu.png&#10;JogaU&#9;FILE&#9;file://C:/Users/Léo/IdeaProjects/Hearthstone_APS_Alpha/src/sample/JogadaUtils.java&#10;CartaBD&#9;FILE&#9;file://C:/Users/Léo/IdeaProjects/Hearthstone_APS_Alpha/src/sample/bd/CartaBD.java&#10;Prese&#9;FILE&#9;file://C:/Users/Léo/IdeaProjects/Hearthstone_APS_Alpha/src/sample/TelaJogoPresenterImpl.java&#10;Efeito&#9;FILE&#9;file://C:/Users/Léo/IdeaProjects/Hearthstone_APS_Alpha/src/sample/entity/Efeito.java" />
     <property name="extract.method.default.visibility" value="private" />
   </component>
   <component name="RecentsManager">
@@ -583,18 +570,18 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1456" height="876" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32864866" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32756758" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32683983" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4126344" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
@@ -627,7 +614,6 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27567568" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32864866" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900432" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -958,16 +944,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/TelaSelecaoPresenterImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="50" column="42" lean-forward="true" selection-start-line="50" selection-start-column="42" selection-end-line="50" selection-end-column="42" />
+        <state relative-caret-position="584">
+          <caret line="65" column="51" lean-forward="false" selection-start-line="65" selection-start-column="51" selection-end-line="65" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="160" column="64" lean-forward="false" selection-start-line="160" selection-start-column="18" selection-end-line="160" selection-end-column="64" />
+        <state relative-caret-position="394">
+          <caret line="429" column="0" lean-forward="false" selection-start-line="429" selection-start-column="0" selection-end-line="429" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -980,10 +966,12 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
+          <last-edited>Hearthstone_APS_Alpha:jar</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>

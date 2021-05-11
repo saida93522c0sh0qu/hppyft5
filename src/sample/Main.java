@@ -577,8 +577,8 @@ public class Main extends Application {
 
     public boolean conectar() {
         if (desconectado) {
-            desconectado = false;
-            return atorRede.conectar();
+            desconectado = !atorRede.conectar();
+            return !desconectado;
         } else {
             return !desconectado;
         }

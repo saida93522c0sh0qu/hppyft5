@@ -4,6 +4,9 @@ import br.ufsc.inf.leobr.cliente.*;
 import br.ufsc.inf.leobr.cliente.exception.*;
 import sample.Main;
 
+import javax.swing.*;
+import java.awt.*;
+
 public class AtorRede implements OuvidorProxy {
 
     protected br.ufsc.inf.leobr.cliente.Proxy proxy;
@@ -19,7 +22,11 @@ public class AtorRede implements OuvidorProxy {
         boolean retorno = true;
         try {
             proxy.conectar(servidor, "NomeJogador" + Long.toString(Math.round(Math.random() * 1000)));
+            JOptionPane.showMessageDialog(new Frame(),
+                    "CONECTOU");
         } catch (JahConectadoException | NaoPossivelConectarException | ArquivoMultiplayerException ex) {
+            JOptionPane.showMessageDialog(new Frame(),
+                    ex.getMessage());
             ex.printStackTrace();
             retorno = false;
         }
